@@ -2,3 +2,19 @@
 #
 # Documentation for this file format can be found in "The Data Catalog"
 # Link: https://kedro.readthedocs.io/en/stable/data/data_catalog.html
+
+tangaras:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/tangaras.csv
+
+spreadsheets:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/spreadsheets.csv
+
+raw_data_sensors:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/raw_data_sensors.csv
+
+pm25:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/pm25.csv
