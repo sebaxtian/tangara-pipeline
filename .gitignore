@@ -23,6 +23,10 @@ logs/**
 # also keep the example dataset
 !data/01_raw/iris.csv
 
+# also keep spreadsheets and tangaras datasets
+!data/01_raw/spreadsheets.csv
+!data/01_raw/tangaras.csv
+
 
 ##########################
 # Common files

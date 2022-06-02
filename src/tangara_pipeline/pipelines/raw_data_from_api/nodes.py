@@ -2,7 +2,6 @@
 This is a boilerplate pipeline 'raw_data_from_api'
 generated using Kedro 0.18.1
 """
-from typing import Dict
 import pandas as pd
 import requests
 from datetime import datetime, timezone, timedelta
@@ -42,7 +41,7 @@ def _request_to_influxdb(sql_query: str) -> requests.Response:
 
 
 # Get Raw Data Sensors
-def raw_data_sensors(tangaras: pd.DataFrame, validation_period: Dict[str, str]) -> pd.DataFrame:
+def raw_data_sensors(tangaras: pd.DataFrame, start_datetime: str, end_datetime: str) -> pd.DataFrame:
     """Get from InfluxDB API REST the data for sensors registered by Tangara.
        Use the parameter to define the period time used by the request.
 
@@ -53,7 +52,7 @@ def raw_data_sensors(tangaras: pd.DataFrame, validation_period: Dict[str, str]) 
     """
     df_sensors = []
 
-    sql_query = _get_sql_query_sensors(tangaras, validation_period['start_datetime'], validation_period['end_datetime'])
+    sql_query = _get_sql_query_sensors(tangaras, start_datetime, end_datetime)
     influxdb_api_request = _request_to_influxdb(sql_query)
 
     result_list = influxdb_api_request.json()['results']
