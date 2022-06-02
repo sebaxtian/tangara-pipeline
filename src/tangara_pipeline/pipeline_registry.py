@@ -4,6 +4,7 @@ from typing import Dict
 from kedro.pipeline import Pipeline, pipeline
 
 from tangara_pipeline.pipelines import raw_data_from_csv
+from tangara_pipeline.pipelines import raw_data_from_api
 
 
 def register_pipelines() -> Dict[str, Pipeline]:
@@ -13,8 +14,10 @@ def register_pipelines() -> Dict[str, Pipeline]:
         A mapping from a pipeline name to a ``Pipeline`` object.
     """
     raw_data_from_csv_pipeline = raw_data_from_csv.create_pipeline()
+    raw_data_from_api_pipeline = raw_data_from_api.create_pipeline()
 
     return {
-        "__default__": raw_data_from_csv_pipeline,
-        "raw_data_from_csv": raw_data_from_csv_pipeline
+        "__default__": raw_data_from_csv_pipeline + raw_data_from_api_pipeline,
+        "raw_data_from_csv": raw_data_from_csv_pipeline,
+        "raw_data_from_api": raw_data_from_api_pipeline
     }

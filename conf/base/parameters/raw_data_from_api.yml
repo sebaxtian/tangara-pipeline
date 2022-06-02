@@ -1,0 +1,11 @@
+# This is a boilerplate parameters config generated for pipeline 'raw_data_from_api'
+# using Kedro 0.18.1.
+#
+# Documentation for this file format can be found in "Parameters"
+# Link: https://kedro.readthedocs.io/en/0.18.1/kedro_project_setup/configuration.html#parameters
+
+
+# Period time when sensors were validated on DAGMA stations
+validation_period:
+    start_datetime: '2022-04-01T00:00:00'
+    end_datetime: '2022-04-30T23:59:59'

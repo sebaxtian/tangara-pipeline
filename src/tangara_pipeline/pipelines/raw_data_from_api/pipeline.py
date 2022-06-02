@@ -1,5 +1,5 @@
 """
-This is a boilerplate pipeline 'raw_data_from_csv'
+This is a boilerplate pipeline 'raw_data_from_api'
 generated using Kedro 0.18.1
 """
 
@@ -12,8 +12,8 @@ def create_pipeline(**kwargs) -> Pipeline:
     return pipeline([
         node(
             func=raw_data_sensors,
-            inputs=['tangaras', 'spreadsheets'],
-            outputs='raw_data_sensors_csv',
-            name='raw_data_sensors_csv_node'
+            inputs=['tangaras', 'params:validation_period'],
+            outputs='raw_data_sensors_api',
+            name='raw_data_sensors_api_node'
         )
     ])
