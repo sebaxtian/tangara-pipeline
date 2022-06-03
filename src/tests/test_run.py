@@ -37,5 +37,14 @@ def project_context(config_loader):
 # and should be replaced with the ones testing the project
 # functionality
 class TestProjectContext:
+
     def test_project_path(self, project_context):
         assert project_context.project_path == Path.cwd()
+    
+    def test_project_catalog(self, project_context):
+        base_catalog = ['tangaras', 'spreadsheets']
+        assert set(base_catalog).issubset(set(project_context.catalog.list()))
+
+    def test_project_params(self, project_context):
+        base_params = ['raw_data_origin', 'start_datetime', 'end_datetime']
+        assert set(base_params).issubset(set(project_context.params.keys()))
