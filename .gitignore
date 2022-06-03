@@ -161,3 +161,9 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# Pytest cache
+.pytest_cache/
+
+# Visual Studio Code Settings
+.vscode/
