@@ -10,6 +10,7 @@ https://docs.pytest.org/en/latest/getting-started.html
 To run the tests, run ``kedro test`` from the project root directory.
 """
 import pytest
+import re
 
 from tests.fixtures.tangaras_fixture import tangaras_fixture
 from tests.fixtures.spreadsheets_fixture import spreadsheets_fixture
@@ -53,4 +54,4 @@ class TestRawDataFromCSV:
         gsheets_url = spreadsheets_fixture.iloc[[0]]["URL"].to_numpy()[0]
         url_csv = _convert_gsheets_url(gsheets_url)
 
-        assert url_csv.split("/")[-1] == "export?format=csv"
+        assert re.search(r'format=csv(&gid=\w*)?', url_csv)
