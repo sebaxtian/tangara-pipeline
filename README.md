@@ -6,14 +6,27 @@ This is your new Kedro project, which was generated using `Kedro 0.18.1`.
 
 Take a look at the [Kedro documentation](https://kedro.readthedocs.io) to get started.
 
+## Kedro project development workflow
+
+When building a Kedro project, you will typically follow a standard development workflow:
+
+![Standard development workflow](https://kedro.readthedocs.io/en/stable/_images/typical_workflow.png "Standard development workflow")
+
+Take a look at the [Standard development workflow](https://kedro.readthedocs.io/en/stable/tutorial/spaceflights_tutorial.html#kedro-project-development-workflow).
+
 ## Rules and guidelines
 
 In order to get the best out of the template:
 
 * Don't remove any lines from the `.gitignore` file we provide
-* Make sure your results can be reproduced by following a [data engineering convention](https://kedro.readthedocs.io/en/stable/faq/faq.html#what-is-data-engineering-convention)
+* Make sure your results can be reproduced by following a data engineering convention
 * Don't commit data to your repository
 * Don't commit any credentials or your local configuration to your repository. Keep all your credentials and local configuration in `conf/local/`
+
+## Data engineering convention
+
+* [What is data engineering convention?](https://kedro.readthedocs.io/en/stable/faq/faq.html#what-is-data-engineering-convention):
+![Data engineering convention](https://kedro.readthedocs.io/en/stable/_images/data_engineering_convention.png "Data engineering convention")
 
 ## How to install dependencies
 
