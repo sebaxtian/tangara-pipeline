@@ -16,7 +16,7 @@ def _convert_gsheets_url(url: str) -> str:
     url += 'export'
     url += '?format=csv'
     if worksheet_id:
-        url += '&gid={}'.format(worksheet_id)
+        url += '&gid={}'.format(worksheet_id) # pragma: no cover
     return url
 
 
@@ -39,8 +39,8 @@ def raw_data_sensors(tangaras: pd.DataFrame, spreadsheets: pd.DataFrame) -> pd.D
             df = df.filter(items=['Time'] + sensors_label)
             df_sensors[row['Name']] = df
             print('From', row['Name'], 'read successfully')
-        except Exception:
-            print('Could not read any data from', row['ID'], row['Name'], row['URL'])
+        except Exception: # pragma: no cover
+            print('Could not read any data from', row['ID'], row['Name'], row['URL']) # pragma: no cover
     
     df_sensors = pd.concat(list(df_sensors.values()))
     df_sensors.rename(columns={'Time':'Datetime'}, inplace=True)
