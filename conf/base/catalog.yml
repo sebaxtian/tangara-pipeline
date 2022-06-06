@@ -22,3 +22,7 @@ raw_data_sensors_api:
 raw_data_sensors:
   type: pandas.CSVDataSet
   filepath: data/01_raw/raw_data_sensors.csv
+
+pm25:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/pm25.csv

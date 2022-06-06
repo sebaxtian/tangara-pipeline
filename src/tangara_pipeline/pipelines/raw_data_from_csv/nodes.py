@@ -44,5 +44,10 @@ def raw_data_sensors(tangaras: pd.DataFrame, spreadsheets: pd.DataFrame) -> pd.D
     
     df_sensors = pd.concat(list(df_sensors.values()))
     df_sensors.rename(columns={'Time':'Datetime'}, inplace=True)
+    
+    df_sensors['Datetime'] = pd.to_datetime(df_sensors['Datetime'])
+    df_sensors['Datetime'] = df_sensors['Datetime'].apply(lambda x: x.isoformat()+"-05:00")
+
+    df_sensors[df_sensors.columns.to_list()[1:]] = df_sensors[df_sensors.columns.to_list()[1:]].astype('Int64')
 
     return df_sensors
