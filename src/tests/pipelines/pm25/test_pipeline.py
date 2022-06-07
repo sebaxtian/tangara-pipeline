@@ -47,13 +47,13 @@ class TestPM25:
         inputs = pm25_pipeline.inputs()
         outputs = pm25_pipeline.outputs()
 
-        assert inputs.issubset(set(["raw_data_sensors", "pm25"]))
-        assert outputs.issubset(set(["pm25", "pm25_by_hour"]))
+        assert inputs.issubset(set(["raw_data_sensors", "pm25", "pm25_by_hour"]))
+        assert outputs.issubset(set(["pm25", "pm25_by_hour", "pm25_movil_24h"]))
 
     def test_nodes(self, pm25_pipeline, raw_data_sensors_fixture):
         pm25_nodes = pm25_pipeline.nodes
 
-        assert len(pm25_nodes) == 2
+        assert len(pm25_nodes) == 3
         assert pm25_nodes[0].name == "pm25_node"
         assert pm25_nodes[0]._func_name == "pm25"
 
@@ -77,14 +77,30 @@ class TestPM25:
         pm25_by_hour = pm25_nodes[1].func(pm25)
         assert pm25_by_hour.empty == False
         assert pm25_by_hour.columns.to_list() == [
-           "Timestamp",
-           "Tangara_1FCA",
-           "CanAirIO_48C6",
-           "Date",
-           "Time",
-           "Weekday",
-           "Month",
-           "Year",
+            "Timestamp",
+            "Tangara_1FCA",
+            "CanAirIO_48C6",
+            "Date",
+            "Time",
+            "Weekday",
+            "Month",
+            "Year",
+        ]
+
+        assert pm25_nodes[2].name == "pm25_movil_24h_node"
+        assert pm25_nodes[2]._func_name == "resample_pm25_movil_24h"
+
+        pm25_movil_24h = pm25_nodes[2].func(pm25_by_hour)
+        assert pm25_movil_24h.empty == False
+        assert pm25_movil_24h.columns.to_list() == [
+            "Timestamp",
+            "Tangara_1FCA",
+            "CanAirIO_48C6",
+            "Date",
+            "Time",
+            "Weekday",
+            "Month",
+            "Year",
         ]
 
     def test__add_datetime_str_values(self, raw_data_sensors_fixture):
