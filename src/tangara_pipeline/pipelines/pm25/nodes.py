@@ -65,3 +65,24 @@ def pm25(raw_data_sensors: pd.DataFrame) -> pd.DataFrame:
     data_sensors = _add_datetime_str_values(raw_data_sensors)
 
     return data_sensors
+
+
+def resample_pm25_by_hour(pm25_data_sensors: pd.DataFrame) -> pd.DataFrame:
+    """
+        Resample pm25 data mean sensors by hour registered by Tangara and include on it
+        string DateTime values.
+    Args:
+        pm25_data_sensors: pm25 data for sensors registered by Tangara
+    Returns:
+        Resample pm25 data mean by hour for sensors registered by Tangara and it's DateTime string values.
+    """
+    # Timestamp
+    pm25_data_sensors['Timestamp'] = pd.to_datetime(pm25_data_sensors['Datetime'])
+
+    # Resample mean by Hour
+    pm25_by_hour = pm25_data_sensors.resample('H', on='Timestamp').mean().reset_index()
+
+    # Data Sensors with DateTime string values
+    pm25_by_hour = _add_datetime_str_values(pm25_by_hour)
+
+    return pm25_by_hour

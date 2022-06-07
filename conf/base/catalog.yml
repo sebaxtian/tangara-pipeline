@@ -26,3 +26,7 @@ raw_data_sensors:
 pm25:
   type: pandas.CSVDataSet
   filepath: data/02_intermediate/pm25.csv
+
+pm25_by_hour:
+  type: pandas.CSVDataSet
+  filepath: data/03_primary/pm25_by_hour.csv

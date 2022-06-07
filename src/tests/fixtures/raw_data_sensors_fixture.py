@@ -27,4 +27,5 @@ def raw_data_sensors_fixture():
             ["2022-03-30T00:04:30-05:00",None,None],
         ]
     )
-    return pd.DataFrame(values, columns=columns)
+
+    return pd.DataFrame(values, columns=columns).astype(dtype={'Datetime': 'object', 'Tangara_1FCA': 'float64', 'CanAirIO_48C6': 'float64'})
