@@ -52,10 +52,13 @@ class TestProjectContext:
 
     def test_tangaras_fixture(self, tangaras_fixture):
         assert tangaras_fixture.columns.to_list() == [
+            "ID",
+            "GEOHASH",
             "MAC",
-            "Label_ID",
-            "Geolocation",
-            "Status",
+            "GEOLOCATION",
+            "LATITUDE",
+            "LONGITUDE",
+            "DATETIME",
         ]
 
     def test_spreadsheets_fixture(self, spreadsheets_fixture):
