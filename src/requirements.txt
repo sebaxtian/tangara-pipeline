@@ -11,3 +11,4 @@ pytest-cov~=3.0
 pytest-mock>=1.7.1, <2.0
 pytest~=6.2
 kedro-viz==4.6.0
+geohash2==1.1

@@ -6,5 +6,5 @@
 
 
 # Period time when sensors were validated on DAGMA stations
-start_datetime: '2022-04-01T00:00:00'
-end_datetime: '2022-04-30T23:59:59'
+start_datetime: '2022-09-04T00:00:00'
+end_datetime: '2022-09-04T23:59:59'
