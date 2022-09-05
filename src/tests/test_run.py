@@ -17,7 +17,6 @@ from kedro.framework.context import KedroContext
 from kedro.framework.hooks import _create_hook_manager
 
 from .fixtures.tangaras_fixture import tangaras_fixture
-from .fixtures.spreadsheets_fixture import spreadsheets_fixture
 
 
 @pytest.fixture(scope="module")
@@ -43,7 +42,7 @@ class TestProjectContext:
         assert project_context.project_path == Path.cwd()
 
     def test_project_catalog(self, project_context):
-        base_catalog = ["tangaras", "spreadsheets"]
+        base_catalog = ["tangaras"]
         assert set(base_catalog).issubset(set(project_context.catalog.list()))
 
     def test_project_params(self, project_context):
@@ -60,6 +59,3 @@ class TestProjectContext:
             "LONGITUDE",
             "DATETIME",
         ]
-
-    def test_spreadsheets_fixture(self, spreadsheets_fixture):
-        assert spreadsheets_fixture.columns.to_list() == ["ID", "Name", "URL"]
