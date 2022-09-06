@@ -9,7 +9,7 @@ import numpy as np
 @pytest.fixture
 def raw_data_sensors_api_fixture():
     columns = [
-        "DATATIME",
+        "DATETIME",
         "TANGARA_1FCA",
         "TANGARA_48C6",
     ]
@@ -30,7 +30,7 @@ def raw_data_sensors_api_fixture():
 
     return pd.DataFrame(values, columns=columns).astype(
         dtype={
-            "DATATIME": "object",
+            "DATETIME": "object",
             "TANGARA_1FCA": "float64",
             "TANGARA_48C6": "float64",
         }
