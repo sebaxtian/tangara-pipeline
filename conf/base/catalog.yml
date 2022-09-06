@@ -21,4 +21,4 @@ pm25_by_hour:
 
 pm25_movil_24h:
   type: pandas.CSVDataSet
-  filepath: data/04_feature/pm25_movil_24h.csv
+  filepath: data/03_primary/pm25_movil_24h.csv
