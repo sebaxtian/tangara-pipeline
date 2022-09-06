@@ -42,11 +42,11 @@ class TestProjectContext:
         assert project_context.project_path == Path.cwd()
 
     def test_project_catalog(self, project_context):
-        base_catalog = ["tangaras"]
+        base_catalog = ["tangaras", "raw_data_sensors_api", "pm25", "pm25_by_hour", "pm25_movil_24h"]
         assert set(base_catalog).issubset(set(project_context.catalog.list()))
 
     def test_project_params(self, project_context):
-        base_params = ["raw_data_origin", "start_datetime", "end_datetime"]
+        base_params = ["start_datetime", "end_datetime"]
         assert set(set(project_context.params.keys())).issubset(base_params)
 
     def test_tangaras_fixture(self, tangaras_fixture):

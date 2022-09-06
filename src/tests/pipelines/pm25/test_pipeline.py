@@ -13,14 +13,9 @@ import pandas as pd
 from sqlalchemy import column
 
 
-from tests.fixtures.raw_data_sensors_fixture import raw_data_sensors_fixture
+from tests.fixtures.raw_data_sensors_api_fixture import raw_data_sensors_api_fixture
 from tangara_pipeline.pipelines.pm25 import create_pipeline
 from tangara_pipeline.pipelines.pm25.nodes import _add_datetime_str_values
-from tangara_pipeline.pipelines.pm25.nodes import _get_date_str
-from tangara_pipeline.pipelines.pm25.nodes import _get_time_str
-from tangara_pipeline.pipelines.pm25.nodes import _get_weekday_str
-from tangara_pipeline.pipelines.pm25.nodes import _get_month_str
-from tangara_pipeline.pipelines.pm25.nodes import _get_year_str
 
 
 @pytest.fixture
@@ -30,14 +25,14 @@ def pm25_pipeline():
 
 @pytest.fixture
 def timestamp_fixture():
-    ts_value = datetime.strptime("2022-03-30 00:01:30", "%Y-%m-%d %H:%M:%S")
+    ts_value = datetime.strptime("2022-09-04T00:00:00-05:00", "%Y-%m-%d %H:%M:%S")
     timestamp_dic = {
-        "Timestamp": ts_value,
-        "Date": ts_value.strftime("%x"),
-        "Time": ts_value.strftime("%T"),
-        "Weekday": ts_value.strftime("%A"),
-        "Month": ts_value.strftime("%B"),
-        "Year": ts_value.strftime("%Y"),
+        "DATETIME": ts_value,
+        "DATE": ts_value.strftime("%x"),
+        "TIME": ts_value.strftime("%T"),
+        "WEEKDAY": ts_value.strftime("%A"),
+        "MONTH": ts_value.strftime("%B"),
+        "YEAR": ts_value.strftime("%Y"),
     }
     return timestamp_dic
 
@@ -47,94 +42,49 @@ class TestPM25:
         inputs = pm25_pipeline.inputs()
         outputs = pm25_pipeline.outputs()
 
-        assert inputs.issubset(set(["raw_data_sensors", "pm25", "pm25_by_hour"]))
-        assert outputs.issubset(set(["pm25", "pm25_by_hour", "pm25_movil_24h"]))
+        assert inputs.issubset(set(["raw_data_sensors_api"]))
+        assert outputs.issubset(set(["pm25"]))
 
-    def test_nodes(self, pm25_pipeline, raw_data_sensors_fixture):
+    def test_nodes(self, pm25_pipeline, raw_data_sensors_api_fixture):
         pm25_nodes = pm25_pipeline.nodes
 
-        assert len(pm25_nodes) == 3
+        assert len(pm25_nodes) == 1
         assert pm25_nodes[0].name == "pm25_node"
         assert pm25_nodes[0]._func_name == "pm25"
 
-        pm25 = pm25_nodes[0].func(raw_data_sensors_fixture)
+        pm25 = pm25_nodes[0].func(raw_data_sensors_api_fixture)
         assert pm25.empty == False
         assert pm25.columns.to_list() == [
-            "Datetime",
-            "Tangara_1FCA",
-            "CanAirIO_48C6",
-            "Timestamp",
-            "Date",
-            "Time",
-            "Weekday",
-            "Month",
-            "Year",
+            "DATATIME",
+            "TANGARA_1FCA",
+            "TANGARA_48C6",
+            "DATE",
+            "TIME",
+            "WEEKDAY",
+            "MONTH",
+            "YEAR",
         ]
 
-        assert pm25_nodes[1].name == "pm25_by_hour_node"
-        assert pm25_nodes[1]._func_name == "resample_pm25_by_hour"
+    def test__add_datetime_str_values(self, raw_data_sensors_api_fixture):
+        # DateTime
+        raw_data_sensors_api_fixture["DATATIME"] = pd.to_datetime(
+            raw_data_sensors_api_fixture["DATATIME"]
+        )
 
-        pm25_by_hour = pm25_nodes[1].func(pm25)
-        assert pm25_by_hour.empty == False
-        assert pm25_by_hour.columns.to_list() == [
-            "Timestamp",
-            "Tangara_1FCA",
-            "CanAirIO_48C6",
-            "Date",
-            "Time",
-            "Weekday",
-            "Month",
-            "Year",
+        raw_data_sensors_api_datetime = _add_datetime_str_values(raw_data_sensors_api_fixture)
+        assert raw_data_sensors_api_datetime.columns.to_list() == [
+            "DATATIME",
+            "TANGARA_1FCA",
+            "TANGARA_48C6",
+            "DATE",
+            "TIME",
+            "WEEKDAY",
+            "MONTH",
+            "YEAR",
         ]
-
-        assert pm25_nodes[2].name == "pm25_movil_24h_node"
-        assert pm25_nodes[2]._func_name == "resample_pm25_movil_24h"
-
-        pm25_movil_24h = pm25_nodes[2].func(pm25_by_hour)
-        assert pm25_movil_24h.empty == False
-        assert pm25_movil_24h.columns.to_list() == [
-            "Timestamp",
-            "Tangara_1FCA",
-            "CanAirIO_48C6",
-            "Date",
-            "Time",
-            "Weekday",
-            "Month",
-            "Year",
-        ]
-
-    def test__add_datetime_str_values(self, raw_data_sensors_fixture):
-        # Timestamp
-        raw_data_sensors_fixture["Timestamp"] = pd.to_datetime(
-            raw_data_sensors_fixture["Datetime"]
-        )
-
-        assert _add_datetime_str_values(raw_data_sensors_fixture).columns.to_list() == [
-            "Datetime",
-            "Tangara_1FCA",
-            "CanAirIO_48C6",
-            "Timestamp",
-            "Date",
-            "Time",
-            "Weekday",
-            "Month",
-            "Year",
-        ]
-
-    def test__datetime_str_values(self, timestamp_fixture):
-        assert (
-            _get_date_str(timestamp_fixture["Timestamp"]) == timestamp_fixture["Date"]
-        )
-        assert (
-            _get_time_str(timestamp_fixture["Timestamp"]) == timestamp_fixture["Time"]
-        )
-        assert (
-            _get_weekday_str(timestamp_fixture["Timestamp"])
-            == timestamp_fixture["Weekday"]
-        )
-        assert (
-            _get_month_str(timestamp_fixture["Timestamp"]) == timestamp_fixture["Month"]
-        )
-        assert (
-            _get_year_str(timestamp_fixture["Timestamp"]) == timestamp_fixture["Year"]
-        )
+        assert raw_data_sensors_api_datetime['DATATIME'] == timestamp_fixture['DATATIME']
+        assert raw_data_sensors_api_datetime['DATE'] == timestamp_fixture['DATE']
+        assert raw_data_sensors_api_datetime['TIME'] == timestamp_fixture['TIME']
+        assert raw_data_sensors_api_datetime['WEEKDAY'] == timestamp_fixture['WEEKDAY']
+        assert raw_data_sensors_api_datetime['MONTH'] == timestamp_fixture['MONTH']
+        assert raw_data_sensors_api_datetime['YEAR'] == timestamp_fixture['YEAR']
