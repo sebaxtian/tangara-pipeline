@@ -22,3 +22,27 @@ pm25_by_hour:
 pm25_movil_24h:
   type: pandas.CSVDataSet
   filepath: data/03_primary/pm25_movil_24h.csv
+
+pm25_raw:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/pm25_raw.csv
+
+pm25_clean:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/pm25_clean.csv
+
+pm25_last_hour:
+  type: pandas.CSVDataSet
+  filepath: data/03_primary/pm25_last_hour.csv
+
+pm25_last_8h:
+  type: pandas.CSVDataSet
+  filepath: data/03_primary/pm25_last_8h.csv
+
+pm25_last_12h:
+  type: pandas.CSVDataSet
+  filepath: data/03_primary/pm25_last_12h.csv
+
+pm25_last_24h:
+  type: pandas.CSVDataSet
+  filepath: data/03_primary/pm25_last_24h.csv
