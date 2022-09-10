@@ -46,3 +46,23 @@ pm25_last_12h:
 pm25_last_24h:
   type: pandas.CSVDataSet
   filepath: data/03_primary/pm25_last_24h.csv
+
+aqi_instant:
+  type: pandas.CSVDataSet
+  filepath: data/04_feature/aqi_instant.csv
+
+aqi_last_hour:
+  type: pandas.CSVDataSet
+  filepath: data/04_feature/aqi_last_hour.csv
+
+aqi_last_8h:
+  type: pandas.CSVDataSet
+  filepath: data/04_feature/aqi_last_8h.csv
+
+aqi_last_12h:
+  type: pandas.CSVDataSet
+  filepath: data/04_feature/aqi_last_12h.csv
+
+aqi_last_24h:
+  type: pandas.CSVDataSet
+  filepath: data/04_feature/aqi_last_24h.csv
