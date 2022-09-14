@@ -197,9 +197,7 @@ def pm25_clean(pm25_raw: pd.DataFrame) -> pd.DataFrame:
         pm25_clean: clean data for registered Tangara sensors without outliers
     """
     # Data Frame Sensors
-    pm25_clean = drop_outliers(pm25_raw)
-
-    return pm25_clean
+    return drop_outliers(pm25_raw)
 
 
 # Get pm25 resample mean last hour
@@ -218,9 +216,7 @@ def pm25_last_hour(pm25_clean: pd.DataFrame) -> pd.DataFrame:
         pm25_last_hour: resample data for registered Tangara sensors to last hour
     """
     # Data Frame Sensors
-    pm25_last_hour = resample_pm25_last_hour(pm25_clean)
-
-    return pm25_last_hour
+    return resample_pm25_last_hour(pm25_clean)
 
 
 # Get pm25 resample mean last 8 hours

@@ -45,10 +45,6 @@ class TestProjectContext:
     def test_project_catalog(self, project_context):
         base_catalog = [
             "tangaras",
-            "raw_data_sensors_api",
-            "pm25",
-            "pm25_by_hour",
-            "pm25_movil_24h",
             "pm25_raw",
             "pm25_clean",
             "pm25_last_hour",

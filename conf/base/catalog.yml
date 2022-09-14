@@ -7,22 +7,6 @@ tangaras:
   type: pandas.CSVDataSet
   filepath: data/01_raw/tangaras.csv
 
-raw_data_sensors_api:
-  type: pandas.CSVDataSet
-  filepath: data/01_raw/raw_data_sensors_api.csv
-
-pm25:
-  type: pandas.CSVDataSet
-  filepath: data/02_intermediate/pm25.csv
-
-pm25_by_hour:
-  type: pandas.CSVDataSet
-  filepath: data/03_primary/pm25_by_hour.csv
-
-pm25_movil_24h:
-  type: pandas.CSVDataSet
-  filepath: data/03_primary/pm25_movil_24h.csv
-
 pm25_raw:
   type: pandas.CSVDataSet
   filepath: data/01_raw/pm25_raw.csv
