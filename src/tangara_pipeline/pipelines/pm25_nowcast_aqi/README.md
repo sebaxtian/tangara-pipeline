@@ -1,4 +1,4 @@
-# Pipeline raw_data_sensors
+# Pipeline pm25_nowcast_aqi
 
 > *Note:* This is a `README.md` boilerplate generated using `Kedro 0.18.1`.
 

@@ -7,30 +7,46 @@ tangaras:
   type: pandas.CSVDataSet
   filepath: data/01_raw/tangaras.csv
 
-spreadsheets:
+pm25_raw:
   type: pandas.CSVDataSet
-  filepath: data/01_raw/spreadsheets.csv
+  filepath: data/01_raw/pm25_raw.csv
 
-raw_data_sensors_csv:
+pm25_clean:
   type: pandas.CSVDataSet
-  filepath: data/01_raw/raw_data_sensors_csv.csv
+  filepath: data/02_intermediate/pm25_clean.csv
 
-raw_data_sensors_api:
+pm25_last_hour:
   type: pandas.CSVDataSet
-  filepath: data/01_raw/raw_data_sensors_api.csv
+  filepath: data/03_primary/pm25_last_hour.csv
 
-raw_data_sensors:
+pm25_last_8h:
   type: pandas.CSVDataSet
-  filepath: data/01_raw/raw_data_sensors.csv
+  filepath: data/03_primary/pm25_last_8h.csv
 
-pm25:
+pm25_last_12h:
   type: pandas.CSVDataSet
-  filepath: data/02_intermediate/pm25.csv
+  filepath: data/03_primary/pm25_last_12h.csv
 
-pm25_by_hour:
+pm25_last_24h:
   type: pandas.CSVDataSet
-  filepath: data/03_primary/pm25_by_hour.csv
+  filepath: data/03_primary/pm25_last_24h.csv
 
-pm25_movil_24h:
+aqi_instant:
   type: pandas.CSVDataSet
-  filepath: data/04_feature/pm25_movil_24h.csv
+  filepath: data/04_feature/aqi_instant.csv
+
+aqi_last_hour:
+  type: pandas.CSVDataSet
+  filepath: data/04_feature/aqi_last_hour.csv
+
+aqi_last_8h:
+  type: pandas.CSVDataSet
+  filepath: data/04_feature/aqi_last_8h.csv
+
+aqi_last_12h:
+  type: pandas.CSVDataSet
+  filepath: data/04_feature/aqi_last_12h.csv
+
+aqi_last_24h:
+  type: pandas.CSVDataSet
+  filepath: data/04_feature/aqi_last_24h.csv

@@ -17,7 +17,7 @@ from kedro.framework.context import KedroContext
 from kedro.framework.hooks import _create_hook_manager
 
 from .fixtures.tangaras_fixture import tangaras_fixture
-from .fixtures.spreadsheets_fixture import spreadsheets_fixture
+from .fixtures.pm25_raw_fixture import pm25_raw_fixture
 
 
 @pytest.fixture(scope="module")
@@ -43,20 +43,45 @@ class TestProjectContext:
         assert project_context.project_path == Path.cwd()
 
     def test_project_catalog(self, project_context):
-        base_catalog = ["tangaras", "spreadsheets"]
+        base_catalog = [
+            "tangaras",
+            "pm25_raw",
+            "pm25_clean",
+            "pm25_last_hour",
+            "pm25_last_8h",
+            "pm25_last_12h",
+            "pm25_last_24h",
+            "aqi_instant",
+            "aqi_last_hour",
+            "aqi_last_8h",
+            "aqi_last_12h",
+            "aqi_last_24h",
+        ]
         assert set(base_catalog).issubset(set(project_context.catalog.list()))
 
     def test_project_params(self, project_context):
-        base_params = ["raw_data_origin", "start_datetime", "end_datetime"]
+        base_params = ["start_datetime", "end_datetime", "nowcast_datetime"]
         assert set(set(project_context.params.keys())).issubset(base_params)
 
     def test_tangaras_fixture(self, tangaras_fixture):
         assert tangaras_fixture.columns.to_list() == [
+            "ID",
+            "GEOHASH",
             "MAC",
-            "Label_ID",
-            "Geolocation",
-            "Status",
+            "GEOLOCATION",
+            "LATITUDE",
+            "LONGITUDE",
+            "DATETIME",
         ]
-
-    def test_spreadsheets_fixture(self, spreadsheets_fixture):
-        assert spreadsheets_fixture.columns.to_list() == ["ID", "Name", "URL"]
+    
+    def test_pm25_raw_fixture(self, pm25_raw_fixture):
+        assert pm25_raw_fixture.columns.to_list() == [
+            "DATETIME",
+            "TANGARA_2BBA",
+            "TANGARA_14D6",
+            "TANGARA_1CE2",
+            "TANGARA_1FCA",
+            "TANGARA_2492",
+            "TANGARA_2FF6",
+            "TANGARA_48C6",
+        ]
