@@ -3,3 +3,6 @@
 #
 # Documentation for this file format can be found in "Parameters"
 # Link: https://kedro.readthedocs.io/en/0.18.1/kedro_project_setup/configuration.html#parameters
+
+# Current DateTime to Calculate NowCast AQI
+nowcast_datetime: '2022-09-06T13:35:00'
