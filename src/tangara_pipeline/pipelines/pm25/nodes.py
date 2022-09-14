@@ -9,6 +9,7 @@ import requests
 from io import StringIO
 from datetime import datetime, timezone, timedelta
 import geohash2
+import pytz
 
 
 
@@ -123,11 +124,32 @@ def pm25_raw(nowcast_datetime: str) -> List[pd.DataFrame]:
         Both pm25_raw and tangaras raw data for registered Tangara sensors
     """
 
-    # Current DateTime
-    nowcast_timestamp = int(datetime.fromisoformat(nowcast_datetime).timestamp() * 1000)
+    # NowCast DateTime
+    nowcast_datetime = datetime.fromisoformat(nowcast_datetime)
+
+    # Timezone for America/Bogota
+    tz = pytz.timezone('America/Bogota')
+    nowcast_datetime = tz.localize(nowcast_datetime)
+    print('-------------nowcast_datetime-------------->>>> ', nowcast_datetime)
+
+    # Creating a new timezone
+    new_tz = pytz.timezone('America/Bogota')
+
+    # Changing the timezone of our object
+    nowcast_datetime_tz = nowcast_datetime.astimezone(new_tz)
+    print('-------------nowcast_datetime_tz-------------->>>> ', nowcast_datetime_tz)
+
     # Start DateTime
-    start_datetime = (datetime.fromisoformat(nowcast_datetime) - timedelta(hours=24)).isoformat()
-    start_timestamp = int(datetime.fromisoformat(start_datetime).timestamp() * 1000)
+    start_datetime = datetime.fromisoformat((nowcast_datetime_tz - timedelta(hours=24)).isoformat())
+    print('-------------start_datetime-------------->>>> ', start_datetime)
+
+    # Current DateTime
+    nowcast_timestamp = int(nowcast_datetime_tz.timestamp() * 1000)
+    # Start DateTime
+    start_timestamp = int(start_datetime.timestamp() * 1000)
+
+    print('-------------nowcast_timestamp-------------->>>> ', nowcast_timestamp)
+    print('-------------start_timestamp-------------->>>> ', start_timestamp)
 
     # Data Frame Tangaras
     tangaras = get_df_tangaras(start_timestamp, nowcast_timestamp)
