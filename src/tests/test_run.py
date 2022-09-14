@@ -42,11 +42,28 @@ class TestProjectContext:
         assert project_context.project_path == Path.cwd()
 
     def test_project_catalog(self, project_context):
-        base_catalog = ["tangaras", "raw_data_sensors_api", "pm25", "pm25_by_hour", "pm25_movil_24h"]
+        base_catalog = [
+            "tangaras",
+            "raw_data_sensors_api",
+            "pm25",
+            "pm25_by_hour",
+            "pm25_movil_24h",
+            "pm25_raw",
+            "pm25_clean",
+            "pm25_last_hour",
+            "pm25_last_8h",
+            "pm25_last_12h",
+            "pm25_last_24h",
+            "aqi_instant",
+            "aqi_last_hour",
+            "aqi_last_8h",
+            "aqi_last_12h",
+            "aqi_last_24h",
+        ]
         assert set(base_catalog).issubset(set(project_context.catalog.list()))
 
     def test_project_params(self, project_context):
-        base_params = ["start_datetime", "end_datetime"]
+        base_params = ["start_datetime", "end_datetime", "nowcast_datetime"]
         assert set(set(project_context.params.keys())).issubset(base_params)
 
     def test_tangaras_fixture(self, tangaras_fixture):
