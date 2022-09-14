@@ -17,6 +17,7 @@ from kedro.framework.context import KedroContext
 from kedro.framework.hooks import _create_hook_manager
 
 from .fixtures.tangaras_fixture import tangaras_fixture
+from .fixtures.pm25_raw_fixture import pm25_raw_fixture
 
 
 @pytest.fixture(scope="module")
@@ -75,4 +76,16 @@ class TestProjectContext:
             "LATITUDE",
             "LONGITUDE",
             "DATETIME",
+        ]
+    
+    def test_pm25_raw_fixture(self, pm25_raw_fixture):
+        assert pm25_raw_fixture.columns.to_list() == [
+            "DATETIME",
+            "TANGARA_2BBA",
+            "TANGARA_14D6",
+            "TANGARA_1CE2",
+            "TANGARA_1FCA",
+            "TANGARA_2492",
+            "TANGARA_2FF6",
+            "TANGARA_48C6",
         ]
