@@ -9,7 +9,6 @@ import requests
 from io import StringIO
 from datetime import datetime, timezone, timedelta
 import geohash2
-import pytz
 
 
 
@@ -127,20 +126,6 @@ def pm25_raw(nowcast_datetime: str) -> List[pd.DataFrame]:
     # NowCast DateTime
     nowcast_datetime = datetime.fromisoformat(nowcast_datetime)
     print('-------------nowcast_datetime-------------->>>> ', nowcast_datetime)
-
-    """
-    # Timezone for America/Bogota
-    tz = pytz.timezone('America/Bogota')
-    nowcast_datetime = tz.localize(nowcast_datetime)
-    print('-------------nowcast_datetime-------------->>>> ', nowcast_datetime)
-
-    # Creating a new timezone
-    new_tz = pytz.timezone('America/Bogota')
-
-    # Changing the timezone of our object
-    nowcast_datetime_tz = nowcast_datetime.astimezone(new_tz)
-    print('-------------nowcast_datetime_tz-------------->>>> ', nowcast_datetime_tz)
-    """
 
     # Start DateTime
     start_datetime = datetime.fromisoformat((nowcast_datetime - timedelta(hours=24)).isoformat())
