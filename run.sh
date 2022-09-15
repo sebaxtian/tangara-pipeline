@@ -6,10 +6,8 @@
 
 echo "Running Tangara Pipeline ..."
 
-source .venv/bin/activate
-
 # Run PM25 Pipeline
-DATETIME=$(date '+%Y-%m-%dT%H:%M:%S')
+DATETIME=$(TZ='America/Bogota' date '+%Y-%m-%dT%H:%M:%S')
 echo 'DATETIME: '$DATETIME
 kedro run --params nowcast_datetime:$DATETIME
 # '2022-09-06T13:35:00'

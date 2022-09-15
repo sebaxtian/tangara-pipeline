@@ -5,7 +5,7 @@ name: PM25 NowCast AQI
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '0 * * * *'
   push:
       branches:
         - "feature/pm25-nowcast-aqi"
