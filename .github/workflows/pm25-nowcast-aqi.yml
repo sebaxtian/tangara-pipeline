@@ -39,3 +39,6 @@ jobs:
       run: |
         pytest --cov-fail-under=90
         ./run.sh
+    - name: PM25 NowCast AQI
+      run: |
+        ./run.sh
