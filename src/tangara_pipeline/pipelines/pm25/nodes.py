@@ -105,8 +105,6 @@ def get_df_sensors(tangaras: pd.DataFrame, start_datetime: int, end_datetime: in
     
     df_sensors = df_sensors[0].join(df_sensors[1:]).reset_index()
 
-    #tz = timezone(timedelta(hours=-5))
-    #df_sensors['DATETIME'] = df_sensors['DATETIME'].apply(lambda x: datetime.fromtimestamp(int(x) / 1000, tz=tz).isoformat())
     df_sensors['DATETIME'] = df_sensors['DATETIME'].apply(lambda x: datetime.fromtimestamp(int(x) / 1000).isoformat())
 
     df_sensors[df_sensors.columns.to_list()[1:]] = df_sensors[df_sensors.columns.to_list()[1:]].astype('Int64')
@@ -123,6 +121,11 @@ def pm25_raw(nowcast_datetime: str) -> List[pd.DataFrame]:
     Returns:
         Both pm25_raw and tangaras raw data for registered Tangara sensors
     """
+
+    #
+    # Please nowcast_datetime must be: NOWCAST_DATETIME=$(TZ='America/Bogota' date '+%Y-%m-%dT%H:%M:%S')
+    # Check the script bash: run.sh
+    #
 
     # NowCast DateTime
     nowcast_datetime = datetime.fromisoformat(nowcast_datetime)

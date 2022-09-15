@@ -7,8 +7,8 @@ on:
   schedule:
     - cron: '0 * * * *'
   push:
-      branches:
-        - "feature/pm25-nowcast-aqi"
+    branches:
+      - "feature/pm25-nowcast-aqi"
 
 jobs:
   build:
