@@ -49,7 +49,7 @@ jobs:
           git config --global user.email 'sebaxtianrioss@gmail.com'
           git config --global user.name 'Sebastian Rios Sabogal'
           git add .
-          git commit -m "PM25 NowCast AQI Updated at $(TZ='America/Bogota' date '+%Y-%m-%dT%H:%M:%S')"
+          git commit -m "PM25 NowCast AQI Updated at $(TZ='America/Bogota' date '+%Y-%m-%dT%H:%M:%S') America/Bogota"
           git push origin feature/pm25-nowcast-aqi
         else
           echo "Not Changes related to PM25 NowCast AQI"
