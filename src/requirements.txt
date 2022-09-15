@@ -7,9 +7,9 @@ jupyterlab~=3.0
 kedro[pandas.CSVDataSet]==0.18.1
 kedro-telemetry~=0.2.0
 nbstripout~=0.4
-pytest-cov~=3.0
-pytest-mock>=1.7.1, <2.0
-pytest~=6.2
+pytest-cov==3.0.0
+pytest-mock==1.13.0
+pytest==6.2.5
 kedro-viz==4.6.0
 geohash2==1.1
 matplotlib==3.5.3
