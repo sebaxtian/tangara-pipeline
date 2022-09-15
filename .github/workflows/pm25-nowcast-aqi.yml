@@ -10,9 +10,6 @@ on:
       branches:
         - "feature/pm25-nowcast-aqi"
 
-permissions:
-  contents: read
-
 jobs:
   build:
 
