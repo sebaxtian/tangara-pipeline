@@ -5,7 +5,7 @@ name: PM25 NowCast AQI
 
 on:
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '*/5 * * * *'
 
 permissions:
   contents: read
