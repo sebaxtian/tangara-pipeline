@@ -107,7 +107,7 @@ def get_df_sensors(tangaras: pd.DataFrame, start_datetime: int, end_datetime: in
 
     df_sensors['DATETIME'] = df_sensors['DATETIME'].apply(lambda x: datetime.fromtimestamp(int(x) / 1000).isoformat())
 
-    df_sensors[df_sensors.columns.to_list()[1:]] = df_sensors[df_sensors.columns.to_list()[1:]].astype('Int64')
+    df_sensors[df_sensors.columns.to_list()[1:]] = df_sensors[df_sensors.columns.to_list()[1:]].astype('float64')
     
     return df_sensors
 
