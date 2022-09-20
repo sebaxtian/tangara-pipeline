@@ -60,7 +60,23 @@ class TestProjectContext:
         assert set(base_catalog).issubset(set(project_context.catalog.list()))
 
     def test_project_params(self, project_context):
-        base_params = ["start_datetime", "end_datetime", "nowcast_datetime"]
+        base_params = [
+            "start_datetime",
+            "end_datetime",
+            "nowcast_datetime",
+            "influxdb_version",
+            "pm25_raw_measurement_name",
+            "pm25_clean_measurement_name",
+            "pm25_last_hour_measurement_name",
+            "pm25_last_8h_measurement_name",
+            "pm25_last_12h_measurement_name",
+            "pm25_last_24h_measurement_name",
+            "aqi_instant_measurement_name",
+            "aqi_last_hour_measurement_name",
+            "aqi_last_8h_measurement_name",
+            "aqi_last_12h_measurement_name",
+            "aqi_last_24h_measurement_name",
+        ]
         assert set(set(project_context.params.keys())).issubset(base_params)
 
     def test_tangaras_fixture(self, tangaras_fixture):

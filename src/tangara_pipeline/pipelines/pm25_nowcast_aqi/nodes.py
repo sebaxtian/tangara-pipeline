@@ -75,7 +75,7 @@ def equation1(Cp):
 
     #print('Cp:', Cp)
     #print('Cp:', Cp, 'BP_hi:', BP_hi, 'BP_lo:', BP_lo, 'AQI_hi:', AQI_hi, 'AQI_lo:', AQI_lo, 'AQI:', AQI)
-    AQI = Cp if math.isnan(Cp) else math.ceil((((AQI_hi - AQI_lo) / (BP_hi - BP_lo)) * (Cp - BP_lo)) + AQI_lo)
+    AQI = Cp if math.isnan(Cp) else int(math.ceil((((AQI_hi - AQI_lo) / (BP_hi - BP_lo)) * (Cp - BP_lo)) + AQI_lo))
     #print('Cp:', Cp, 'BP_hi:', BP_hi, 'BP_lo:', BP_lo, 'AQI_hi:', AQI_hi, 'AQI_lo:', AQI_lo, 'AQI:', AQI)
     #print('Cp:', Cp, 'AQI:', AQI)
 
@@ -88,6 +88,7 @@ def pm25_to_aqi(pm25_sensors):
     for column in aqi_values.columns:
         if column != 'DATETIME':
             aqi_values[column] = aqi_values[column].apply(lambda x: equation1(np.float64(x)))
+            aqi_values[column] = aqi_values[column].astype('Int64')
     return aqi_values
 
 

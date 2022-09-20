@@ -3,6 +3,17 @@
 #
 # Run tangara-pipeline
 #
+# Please, before run, setup the credentials.yml file into directory conf/local/
+# Credentials to InfluxDB
+# influxdb:
+#    url: VALUE
+#    token: VALUE
+#    org: VALUE
+#    bucket: VALUE
+#    username: VALUE
+#    password: VALUE
+#    database: VALUE
+#
 
 echo "Running Tangara Pipeline ..."
 
@@ -15,5 +26,8 @@ kedro run --params nowcast_datetime:$NOWCAST_DATETIME
 
 # Run PM25 NowCast AQI
 kedro run --pipeline pm25_nowcast_aqi
+
+# Run PM25 InfluxDB AQI
+kedro run --pipeline pm25_influxdb_aqi
 
 echo "Finished !!"
