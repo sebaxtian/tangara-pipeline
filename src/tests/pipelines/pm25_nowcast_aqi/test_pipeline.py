@@ -29,7 +29,6 @@ class TestPM25NowCastAQI:
     
     def test_nodes(self, pm25_nowcast_aqi_pipeline, pm25_clean_fixture, aqi_instant_fixture, aqi_last_hour_fixture):
         pm25_nowcast_aqi_nodes = pm25_nowcast_aqi_pipeline.nodes
-        print(pm25_nowcast_aqi_nodes)
         assert len(pm25_nowcast_aqi_nodes) == 5
 
         for node in pm25_nowcast_aqi_nodes:
