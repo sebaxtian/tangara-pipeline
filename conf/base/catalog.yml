@@ -3,6 +3,10 @@
 # Documentation for this file format can be found in "The Data Catalog"
 # Link: https://kedro.readthedocs.io/en/stable/data/data_catalog.html
 
+tangara_stations:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/tangara_stations.csv
+
 tangaras:
   type: pandas.CSVDataSet
   filepath: data/01_raw/tangaras.csv
@@ -10,6 +14,18 @@ tangaras:
 pm25_raw:
   type: pandas.CSVDataSet
   filepath: data/01_raw/pm25_raw.csv
+
+temp_raw:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/temp_raw.csv
+
+hum_raw:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/hum_raw.csv
+
+co2_raw:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/co2_raw.csv
 
 pm25_clean:
   type: pandas.CSVDataSet
