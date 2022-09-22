@@ -8,9 +8,10 @@ in the official documentation:
 https://docs.pytest.org/en/latest/getting-started.html
 """
 import pytest
+from datetime import datetime
 
 from tangara_pipeline.pipelines.tangara_stations import create_pipeline
-
+from tangara_pipeline.pipelines.tangara_stations.nodes import get_start_nowcast_timestamp
 
 @pytest.fixture
 def tangara_stations_pipeline():
@@ -59,3 +60,19 @@ class TestTangaraStations:
                 co2_raw = node.func(tangara_stations, nowcast_datetime)
                 assert co2_raw.empty == False
                 assert 'DATETIME' in co2_raw.columns.to_list()
+
+    def test_get_start_nowcast_timestamp(self):
+        nowcast_datetime = '2022-09-06T13:35:00'
+        start_timestamp, nowcast_timestamp = get_start_nowcast_timestamp(nowcast_datetime)
+
+        tdelta = int((datetime.fromtimestamp(nowcast_timestamp / 1000) - datetime.fromtimestamp(start_timestamp / 1000)).total_seconds()/(60*60))
+        assert tdelta > 0
+        assert tdelta == 24
+
+        nowcast_datetime = '2022-09-06T13:35:00'
+        start_datetime = '2022-09-05T21:40:10'
+        start_timestamp, nowcast_timestamp = get_start_nowcast_timestamp(nowcast_datetime, start_datetime)
+
+        tdelta = int((datetime.fromtimestamp(nowcast_timestamp / 1000) - datetime.fromtimestamp(start_timestamp / 1000)).total_seconds()/(60*60))
+        assert tdelta > 0
+        assert tdelta == 15

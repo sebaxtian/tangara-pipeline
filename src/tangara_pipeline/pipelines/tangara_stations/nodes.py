@@ -12,7 +12,7 @@ import geohash2
 
 
 # Get start and nowcast Timestamp
-def get_start_nowcast_timestamp(nowcast_datetime: str) -> List[int]:
+def get_start_nowcast_timestamp(nowcast_datetime: str, start_datetime: str = None) -> List[int]:
     #
     # Please nowcast_datetime must be: NOWCAST_DATETIME=$(TZ='America/Bogota' date '+%Y-%m-%dT%H:%M:%S')
     # Check the script bash: run.sh
@@ -22,8 +22,13 @@ def get_start_nowcast_timestamp(nowcast_datetime: str) -> List[int]:
     nowcast_datetime = datetime.fromisoformat(nowcast_datetime)
     print('-------------nowcast_datetime-------------->>>> ', nowcast_datetime)
 
-    # Start DateTime last 24 hours
-    start_datetime = datetime.fromisoformat((nowcast_datetime - timedelta(hours=24)).isoformat())
+    # Start DateTime
+    if not start_datetime:
+        # Start DateTime last 24 hours
+        start_datetime = datetime.fromisoformat((nowcast_datetime - timedelta(hours=24)).isoformat())
+    else:
+        # Start DateTime
+        start_datetime = datetime.fromisoformat(start_datetime)
     print('-------------start_datetime-------------->>>> ', start_datetime)
 
     # Current DateTime
