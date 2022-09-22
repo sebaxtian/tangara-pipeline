@@ -5,7 +5,6 @@ generated using Kedro 0.18.1
 
 from kedro.pipeline import Pipeline, node, pipeline
 
-from .nodes import pm25_raw
 from .nodes import pm25_clean
 from .nodes import pm25_last_hour
 from .nodes import pm25_last_8h
@@ -15,12 +14,6 @@ from .nodes import pm25_last_24h
 
 def create_pipeline(**kwargs) -> Pipeline:
     return pipeline([
-        node(
-            func=pm25_raw,
-            inputs=['params:nowcast_datetime'],
-            outputs=['tangaras', 'pm25_raw'],
-            name='pm25_raw_node'
-        ),
         node(
             func=pm25_clean,
             inputs='pm25_raw',
