@@ -164,7 +164,6 @@ def tangara_stations(nowcast_datetime: str, start_datetime: str = None) -> pd.Da
     """
     # start and nowcast Timestamp
     start_timestamp, nowcast_timestamp = get_start_nowcast_timestamp(nowcast_datetime, start_datetime)
-    print("------------", start_timestamp, nowcast_timestamp)
     # Data Frame Tangara Stations
     return get_tangara_stations(start_timestamp, nowcast_timestamp)
 

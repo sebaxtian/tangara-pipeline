@@ -3,6 +3,9 @@
 #
 # Run tangara-pipeline
 #
+# Process data from last 24 hours, execute this script every hour to report data from
+# the last 24 hours since current datetime.
+#
 # Please, before run, setup the credentials.yml file into directory conf/local/
 # Credentials to InfluxDB
 # influxdb:
