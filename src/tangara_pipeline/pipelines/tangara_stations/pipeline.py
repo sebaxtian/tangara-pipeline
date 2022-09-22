@@ -16,31 +16,31 @@ def create_pipeline(**kwargs) -> Pipeline:
     return pipeline([
         node(
             func=tangara_stations,
-            inputs='params:nowcast_datetime',
+            inputs=['params:nowcast_datetime', 'params:start_datetime'],
             outputs='tangara_stations',
             name='tangara_stations_node'
         ),
         node(
             func=pm25_raw,
-            inputs=['tangara_stations', 'params:nowcast_datetime'],
+            inputs=['tangara_stations', 'params:nowcast_datetime', 'params:start_datetime'],
             outputs='pm25_raw',
             name='pm25_raw_node'
         ),
         node(
             func=temp_raw,
-            inputs=['tangara_stations', 'params:nowcast_datetime'],
+            inputs=['tangara_stations', 'params:nowcast_datetime', 'params:start_datetime'],
             outputs='temp_raw',
             name='temp_raw_node'
         ),
         node(
             func=hum_raw,
-            inputs=['tangara_stations', 'params:nowcast_datetime'],
+            inputs=['tangara_stations', 'params:nowcast_datetime', 'params:start_datetime'],
             outputs='hum_raw',
             name='hum_raw_node'
         ),
         node(
             func=co2_raw,
-            inputs=['tangara_stations', 'params:nowcast_datetime'],
+            inputs=['tangara_stations', 'params:nowcast_datetime', 'params:start_datetime'],
             outputs='co2_raw',
             name='co2_raw_node'
         )

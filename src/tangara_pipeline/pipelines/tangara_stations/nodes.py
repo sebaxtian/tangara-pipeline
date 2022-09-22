@@ -154,7 +154,7 @@ def get_df_measurement(tangaras: pd.DataFrame, measurement: str, start_datetime:
     return df_sensors
 
 
-def tangara_stations(nowcast_datetime: str) -> pd.DataFrame:
+def tangara_stations(nowcast_datetime: str, start_datetime: str = None) -> pd.DataFrame:
     """
         Request tangara stations via API from InfluxDB for registered Tangara stations
     Args:
@@ -163,13 +163,13 @@ def tangara_stations(nowcast_datetime: str) -> pd.DataFrame:
         tangara_stations: Registered Tangara stations
     """
     # start and nowcast Timestamp
-    start_timestamp, nowcast_timestamp = get_start_nowcast_timestamp(nowcast_datetime)
+    start_timestamp, nowcast_timestamp = get_start_nowcast_timestamp(nowcast_datetime, start_datetime)
     print("------------", start_timestamp, nowcast_timestamp)
     # Data Frame Tangara Stations
     return get_tangara_stations(start_timestamp, nowcast_timestamp)
 
 
-def pm25_raw(tangara_stations: pd.DataFrame, nowcast_datetime: str) -> pd.DataFrame:
+def pm25_raw(tangara_stations: pd.DataFrame, nowcast_datetime: str, start_datetime: str = None) -> pd.DataFrame:
     """
         Request pm25 measurement via API from InfluxDB for registered Tangara stations
     Args:
@@ -179,12 +179,12 @@ def pm25_raw(tangara_stations: pd.DataFrame, nowcast_datetime: str) -> pd.DataFr
         pm25_raw: PM25 measurement for registered Tangara stations
     """
     # Start and NowCast Timestamp
-    start_timestamp, nowcast_timestamp = get_start_nowcast_timestamp(nowcast_datetime)
+    start_timestamp, nowcast_timestamp = get_start_nowcast_timestamp(nowcast_datetime, start_datetime)
     # Data Frame PM25 Raw
     return get_df_measurement(tangara_stations, 'pm25', start_timestamp, nowcast_timestamp)
 
 
-def temp_raw(tangara_stations: pd.DataFrame, nowcast_datetime: str) -> pd.DataFrame:
+def temp_raw(tangara_stations: pd.DataFrame, nowcast_datetime: str, start_datetime: str = None) -> pd.DataFrame:
     """
         Request temp measurement via API from InfluxDB for registered Tangara stations
     Args:
@@ -194,12 +194,12 @@ def temp_raw(tangara_stations: pd.DataFrame, nowcast_datetime: str) -> pd.DataFr
         temp_raw: Temperature measurement for registered Tangara stations
     """
     # Start and NowCast Timestamp
-    start_timestamp, nowcast_timestamp = get_start_nowcast_timestamp(nowcast_datetime)
+    start_timestamp, nowcast_timestamp = get_start_nowcast_timestamp(nowcast_datetime, start_datetime)
     # Data Frame Temp Raw
     return get_df_measurement(tangara_stations, 'tmp', start_timestamp, nowcast_timestamp)
 
 
-def hum_raw(tangara_stations: pd.DataFrame, nowcast_datetime: str) -> pd.DataFrame:
+def hum_raw(tangara_stations: pd.DataFrame, nowcast_datetime: str, start_datetime: str = None) -> pd.DataFrame:
     """
         Request hum measurement via API from InfluxDB for registered Tangara stations
     Args:
@@ -209,12 +209,12 @@ def hum_raw(tangara_stations: pd.DataFrame, nowcast_datetime: str) -> pd.DataFra
         hum_raw: Humidity measurement for registered Tangara stations
     """
     # Start and NowCast Timestamp
-    start_timestamp, nowcast_timestamp = get_start_nowcast_timestamp(nowcast_datetime)
+    start_timestamp, nowcast_timestamp = get_start_nowcast_timestamp(nowcast_datetime, start_datetime)
     # Data Frame Hum Raw
     return get_df_measurement(tangara_stations, 'hum', start_timestamp, nowcast_timestamp)
 
 
-def co2_raw(tangara_stations: pd.DataFrame, nowcast_datetime: str) -> pd.DataFrame:
+def co2_raw(tangara_stations: pd.DataFrame, nowcast_datetime: str, start_datetime: str = None) -> pd.DataFrame:
     """
         Request co2 measurement via API from InfluxDB for registered Tangara stations
     Args:
@@ -224,6 +224,6 @@ def co2_raw(tangara_stations: pd.DataFrame, nowcast_datetime: str) -> pd.DataFra
         co2_raw: CO2 measurement for registered Tangara stations
     """
     # Start and NowCast Timestamp
-    start_timestamp, nowcast_timestamp = get_start_nowcast_timestamp(nowcast_datetime)
+    start_timestamp, nowcast_timestamp = get_start_nowcast_timestamp(nowcast_datetime, start_datetime)
     # Data Frame CO2 Raw
     return get_df_measurement(tangara_stations, 'co2', start_timestamp, nowcast_timestamp)

@@ -23,9 +23,9 @@ class TestTangaraStations:
         inputs = tangara_stations_pipeline.all_inputs()
         outputs = tangara_stations_pipeline.all_outputs()
 
-        assert len(inputs) == 2
+        assert len(inputs) == 3
         assert len(outputs) == 5
-        assert inputs.issubset(set(["tangara_stations", "params:nowcast_datetime"]))
+        assert inputs.issubset(set(["tangara_stations", "params:nowcast_datetime", "params:start_datetime"]))
         assert outputs.issubset(set(["tangara_stations", "pm25_raw", "temp_raw", "hum_raw", "co2_raw"]))
     
     def test_nodes(self, tangara_stations_pipeline):
