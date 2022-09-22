@@ -21,9 +21,9 @@ def register_pipelines() -> Dict[str, Pipeline]:
     tangara_stations_pipeline = tangara_stations.create_pipeline()
 
     return {
-        "__default__": pm25_pipeline,
+        "__default__": tangara_stations_pipeline,
+        "tangara_stations": tangara_stations_pipeline,
         "pm25": pm25_pipeline,
         "pm25_nowcast_aqi": pm25_nowcast_aqi_pipeline,
         "pm25_influxdb_aqi": pm25_influxdb_aqi_pipeline,
-        "tangara_stations": tangara_stations_pipeline,
     }

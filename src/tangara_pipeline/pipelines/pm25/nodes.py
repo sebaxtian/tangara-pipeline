@@ -73,7 +73,9 @@ def pm25_clean(pm25_raw: pd.DataFrame) -> pd.DataFrame:
 def resample_pm25_last_hour(data_sensors: pd.DataFrame) -> pd.DataFrame:
     # Timestamp Format
     data_sensors['DATETIME'] = pd.to_datetime(data_sensors['DATETIME'])
-    return data_sensors.resample('H', on='DATETIME', origin='end').mean().reset_index()#.median().reset_index()
+    data_sensors = data_sensors.resample('H', on='DATETIME', origin='end').mean().reset_index()#.median().reset_index()
+    data_sensors['DATETIME'] = data_sensors['DATETIME'].apply(lambda x: x.isoformat())
+    return data_sensors
 
 
 def pm25_last_hour(pm25_clean: pd.DataFrame) -> pd.DataFrame:
@@ -92,7 +94,9 @@ def pm25_last_hour(pm25_clean: pd.DataFrame) -> pd.DataFrame:
 def resample_pm25_last_8h(data_sensors: pd.DataFrame) -> pd.DataFrame:
     # Timestamp Format
     data_sensors['DATETIME'] = pd.to_datetime(data_sensors['DATETIME'])
-    return data_sensors.resample('8H', on='DATETIME', origin='end').mean().reset_index()#.median().reset_index()
+    data_sensors = data_sensors.resample('8H', on='DATETIME', origin='end').mean().reset_index()#.median().reset_index()
+    data_sensors['DATETIME'] = data_sensors['DATETIME'].apply(lambda x: x.isoformat())
+    return data_sensors
 
 
 def pm25_last_8h(pm25_last_hour: pd.DataFrame) -> pd.DataFrame:
@@ -111,7 +115,9 @@ def pm25_last_8h(pm25_last_hour: pd.DataFrame) -> pd.DataFrame:
 def resample_pm25_last_12h(data_sensors: pd.DataFrame) -> pd.DataFrame:
     # Timestamp Format
     data_sensors['DATETIME'] = pd.to_datetime(data_sensors['DATETIME'])
-    return data_sensors.resample('12H', on='DATETIME', origin='end').mean().reset_index()#.median().reset_index()
+    data_sensors = data_sensors.resample('12H', on='DATETIME', origin='end').mean().reset_index()#.median().reset_index()
+    data_sensors['DATETIME'] = data_sensors['DATETIME'].apply(lambda x: x.isoformat())
+    return data_sensors
 
 
 def pm25_last_12h(pm25_last_hour: pd.DataFrame) -> pd.DataFrame:
@@ -130,7 +136,9 @@ def pm25_last_12h(pm25_last_hour: pd.DataFrame) -> pd.DataFrame:
 def resample_pm25_last_24h(data_sensors: pd.DataFrame) -> pd.DataFrame:
     # Timestamp Format
     data_sensors['DATETIME'] = pd.to_datetime(data_sensors['DATETIME'])
-    return data_sensors.resample('24H', on='DATETIME', origin='end').mean().reset_index()#.median().reset_index()
+    data_sensors = data_sensors.resample('24H', on='DATETIME', origin='end').mean().reset_index()#.median().reset_index()
+    data_sensors['DATETIME'] = data_sensors['DATETIME'].apply(lambda x: x.isoformat())
+    return data_sensors
 
 
 def pm25_last_24h(pm25_last_hour: pd.DataFrame) -> pd.DataFrame:

@@ -24,10 +24,13 @@ kedro run --params nowcast_datetime:$NOWCAST_DATETIME
 # '2022-09-06T13:35:00'
 # kedro run --params nowcast_datetime:'2022-09-14T09:13:25'
 
+# Run PM25
+kedro run --pipeline pm25
+
 # Run PM25 NowCast AQI
 kedro run --pipeline pm25_nowcast_aqi
 
 # Run PM25 InfluxDB AQI
-kedro run --pipeline pm25_influxdb_aqi
+#kedro run --pipeline pm25_influxdb_aqi
 
 echo "Finished !!"
