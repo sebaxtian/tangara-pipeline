@@ -21,7 +21,7 @@
 echo "Running Tangara Pipeline ..."
 
 # Run Tangara Stations Pipeline
-NOWCAST_DATETIME=$(TZ='America/Bogota' date '+%Y-%m-%dT%H:%M:%S')
+NOWCAST_DATETIME=$(TZ='America/Bogota' date --iso-8601=seconds)
 echo 'NOWCAST_DATETIME: '$NOWCAST_DATETIME
 kedro run --params nowcast_datetime:$NOWCAST_DATETIME
 # '2022-09-06T13:35:00'
