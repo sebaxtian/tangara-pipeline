@@ -6,6 +6,8 @@
 
 
 # Current DateTime to Calculate NowCast AQI
-nowcast_datetime: '2022-09-06T13:35:00'
+# '2022-09-22T00:00:00' Dia sin carro y sin moto
+# '2022-09-15T00:00:00' Dia normal
+nowcast_datetime: '2022-09-15T23:59:59'
 # Start DateTime, optional
 start_datetime: null

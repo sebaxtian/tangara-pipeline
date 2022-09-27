@@ -33,7 +33,7 @@ kedro run --pipeline pm25
 # Run PM25 NowCast AQI
 kedro run --pipeline pm25_nowcast_aqi
 
-# Run PM25 InfluxDB AQI
-#kedro run --pipeline pm25_influxdb_aqi
+# Run InfluxDB Tangara Stations
+kedro run --pipeline influxdb_tangara_stations
 
 echo "Finished !!"

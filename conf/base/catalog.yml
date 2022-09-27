@@ -66,3 +66,9 @@ aqi_last_12h:
 aqi_last_24h:
   type: pandas.CSVDataSet
   filepath: data/04_feature/aqi_last_24h.csv
+
+stations_measurements:
+  type: PartitionedDataSet
+  path: data/04_feature/stations_measurements/
+  dataset: pandas.CSVDataSet
+  filename_suffix: ".csv"
