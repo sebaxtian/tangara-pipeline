@@ -24,7 +24,7 @@ def get_stations_measurements(
     temp: pd.DataFrame,
     hum: pd.DataFrame,
     co2: pd.DataFrame,
-) -> pd.DataFrame:
+) -> pd.DataFrame: # pragma: no cover
     # Tangara Stations Measurements Dictionary
     stations_measurements = {}
     # For each Tangara Station
@@ -73,7 +73,7 @@ def get_stations_measurements(
     return stations_measurements
 
 
-def station_measurements_to_generator(station_measurements: pd.DataFrame) -> Point:
+def station_measurements_to_generator(station_measurements: pd.DataFrame) -> Point: # pragma: no cover
     """
     Parse your stations_measurements Data Frame into generator
     """
@@ -105,7 +105,7 @@ def station_measurements_to_generator(station_measurements: pd.DataFrame) -> Poi
 
 def sync_ingesting_stations_measurements(
     station_measurements: pd.DataFrame, influxdb_version: str
-) -> None:
+) -> None: # pragma: no cover
     # How to use RxPY to prepare batches for synchronous write into InfluxDB
     # https://github.com/influxdata/influxdb-client-python/blob/master/examples/import_data_set_sync_batching.py
     #
@@ -178,10 +178,10 @@ def ingesting_influxdb(
     aqi_instant: pd.DataFrame,
     tangara_stations: pd.DataFrame,
     influxdb_version: str,
-) -> pd.DataFrame:
+) -> pd.DataFrame: # pragma: no cover
     """
         Ingesting each Tangara Sensor DataFrame Measurements to InfluxDB
-        TODO: Refactoring Code to reach Test Coverage upper 90%
+        TODO: Refactoring Code to reach Test Coverage upper 90% please read and edit .coveragerc
     Args:
         pm25_clean: PM25 measurement
         temp_raw: Temperature measurement

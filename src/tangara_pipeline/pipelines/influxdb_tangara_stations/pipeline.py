@@ -15,5 +15,5 @@ def create_pipeline(**kwargs) -> Pipeline:
             inputs=['pm25_clean', 'temp_raw', 'hum_raw', 'co2_raw', 'aqi_instant', 'tangara_stations', 'params:influxdb_version'],
             outputs='stations_measurements',
             name='ingesting_influxdb_node'
-        ),
+        )
     ])

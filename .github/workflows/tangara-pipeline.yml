@@ -1,14 +1,14 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
 
-name: PM25 NowCast AQI
+name: Tangara Pipeline
 
 on:
   schedule:
     - cron: '0 * * * *'
-#  push:
-#    branches:
-#      - "feature/pm25-nowcast-aqi"
+  push:
+    branches:
+      - "feature/tangara-stations"
 
 jobs:
   build:
@@ -35,7 +35,7 @@ jobs:
     - name: Test with pytest
       run: |
         pytest --cov-fail-under=90
-    - name: PM25 NowCast AQI
+    - name: Tangara Pipeline
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
@@ -44,15 +44,15 @@ jobs:
         # Check any change
         echo $(git status --porcelain)
         if [[ $(git status --porcelain) ]]; then
-          echo "PM25 NowCast AQI Updated"
+          echo "Tangara Pipeline Executed"
           echo ""
           git config --global user.email 'sebaxtianrioss@gmail.com'
           git config --global user.name 'Sebastian Rios Sabogal'
           git add .
-          git commit -m "PM25 NowCast AQI Updated at $(TZ='America/Bogota' date '+%Y-%m-%dT%H:%M:%S') America/Bogota"
-          # git push origin feature/pm25-nowcast-aqi
-          git push origin master
+          git commit -m "Tangara Pipeline Executed at $(TZ='America/Bogota' date '+%Y-%m-%dT%H:%M:%S') America/Bogota"
+          git push origin feature/tangara-stations
+          # git push origin master
         else
-          echo "Not Changes related to PM25 NowCast AQI"
+          echo "Not Changes related to Tangara Pipeline"
         fi
         echo ""

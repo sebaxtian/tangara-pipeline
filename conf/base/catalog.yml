@@ -7,10 +7,6 @@ tangara_stations:
   type: pandas.CSVDataSet
   filepath: data/01_raw/tangara_stations.csv
 
-tangaras:
-  type: pandas.CSVDataSet
-  filepath: data/01_raw/tangaras.csv
-
 pm25_raw:
   type: pandas.CSVDataSet
   filepath: data/01_raw/pm25_raw.csv

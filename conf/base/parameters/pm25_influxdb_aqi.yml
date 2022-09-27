@@ -3,19 +3,3 @@
 #
 # Documentation for this file format can be found in "Parameters"
 # Link: https://kedro.readthedocs.io/en/0.18.1/kedro_project_setup/configuration.html#parameters
-
-# InfluxDB Version, could be: 2.x or 1.8
-influxdb_version: '2.x'
-
-# InfluxDB Measurements
-pm25_raw_measurement_name: PM25_RAW
-pm25_clean_measurement_name: PM25_CLEAN
-pm25_last_hour_measurement_name: PM25_LAST_HOUR
-pm25_last_8h_measurement_name: PM25_LAST_8H
-pm25_last_12h_measurement_name: PM25_LAST_12H
-pm25_last_24h_measurement_name: PM25_LAST_24H
-aqi_instant_measurement_name: AQI_INSTANT
-aqi_last_hour_measurement_name: AQI_LAST_HOUR
-aqi_last_8h_measurement_name: AQI_LAST_8H
-aqi_last_12h_measurement_name: AQI_LAST_12H
-aqi_last_24h_measurement_name: AQI_LAST_24H

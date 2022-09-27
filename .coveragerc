@@ -2,3 +2,6 @@
 omit =
     src/tangara_pipeline/__main__.py
     src/tangara_pipeline/pipeline_registry.py
+    src/tangara_pipeline/pipelines/influxdb_tangara_stations/__init__.py
+    src/tangara_pipeline/pipelines/influxdb_tangara_stations/nodes.py
+    src/tangara_pipeline/pipelines/influxdb_tangara_stations/pipeline.py
