@@ -6,9 +6,9 @@ name: Tangara Pipeline
 on:
   schedule:
     - cron: '0 * * * *'
-  push:
-    branches:
-      - "feature/tangara-stations"
+#  push:
+#    branches:
+#      - "feature/tangara-stations"
 
 jobs:
   build:
@@ -50,8 +50,8 @@ jobs:
           git config --global user.name 'Sebastian Rios Sabogal'
           git add .
           git commit -m "Tangara Pipeline Executed at $(TZ='America/Bogota' date '+%Y-%m-%dT%H:%M:%S') America/Bogota"
-          git push origin feature/tangara-stations
-          # git push origin master
+          # git push origin feature/tangara-stations
+          git push origin master
         else
           echo "Not Changes related to Tangara Pipeline"
         fi
