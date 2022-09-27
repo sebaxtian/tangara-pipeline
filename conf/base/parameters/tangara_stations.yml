@@ -1,0 +1,13 @@
+# This is a boilerplate parameters config generated for pipeline 'tangara_stations'
+# using Kedro 0.18.1.
+#
+# Documentation for this file format can be found in "Parameters"
+# Link: https://kedro.readthedocs.io/en/0.18.1/kedro_project_setup/configuration.html#parameters
+
+
+# Current DateTime to Calculate NowCast AQI TZ='America/Bogota' -05:00
+# '2022-09-22T00:00:00-05:00' Dia sin carro y sin moto
+# '2022-09-15T00:00:00-05:00' Dia normal
+nowcast_datetime: '2022-09-15T00:00:00-05:00'
+# Start DateTime, optional
+start_datetime: null

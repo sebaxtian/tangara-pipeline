@@ -43,5 +43,5 @@ def create_pipeline(**kwargs) -> Pipeline:
             inputs='pm25_last_24h',
             outputs='aqi_last_24h',
             name='aqi_last_24h_node'
-        ),
+        )
     ])

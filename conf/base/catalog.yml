@@ -3,13 +3,25 @@
 # Documentation for this file format can be found in "The Data Catalog"
 # Link: https://kedro.readthedocs.io/en/stable/data/data_catalog.html
 
-tangaras:
+tangara_stations:
   type: pandas.CSVDataSet
-  filepath: data/01_raw/tangaras.csv
+  filepath: data/01_raw/tangara_stations.csv
 
 pm25_raw:
   type: pandas.CSVDataSet
   filepath: data/01_raw/pm25_raw.csv
+
+temp_raw:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/temp_raw.csv
+
+hum_raw:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/hum_raw.csv
+
+co2_raw:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/co2_raw.csv
 
 pm25_clean:
   type: pandas.CSVDataSet
@@ -50,3 +62,9 @@ aqi_last_12h:
 aqi_last_24h:
   type: pandas.CSVDataSet
   filepath: data/04_feature/aqi_last_24h.csv
+
+stations_measurements:
+  type: PartitionedDataSet
+  path: data/04_feature/stations_measurements/
+  dataset: pandas.CSVDataSet
+  filename_suffix: ".csv"

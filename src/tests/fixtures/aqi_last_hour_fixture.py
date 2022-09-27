@@ -46,12 +46,12 @@ def aqi_last_hour_fixture():
     return pd.DataFrame(values, columns=columns).astype(
         dtype={
             "DATETIME": "object",
-            "TANGARA_2BBA": "float64",
-            "TANGARA_14D6": "float64",
-            "TANGARA_1CE2": "float64",
-            "TANGARA_1FCA": "float64",
-            "TANGARA_2492": "float64",
-            "TANGARA_2FF6": "float64",
-            "TANGARA_48C6": "float64",
+            "TANGARA_2BBA": "Int64",
+            "TANGARA_14D6": "Int64",
+            "TANGARA_1CE2": "Int64",
+            "TANGARA_1FCA": "Int64",
+            "TANGARA_2492": "Int64",
+            "TANGARA_2FF6": "Int64",
+            "TANGARA_48C6": "Int64",
         }
     )
