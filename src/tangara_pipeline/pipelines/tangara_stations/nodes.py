@@ -5,7 +5,6 @@ generated using Kedro 0.18.1
 from typing import List
 import pandas as pd
 from datetime import datetime, timezone, timedelta
-import pytz
 import requests
 from io import StringIO
 import geohash2
@@ -15,17 +14,12 @@ import geohash2
 # Get start and nowcast Timestamp
 def get_start_nowcast_timestamp(nowcast_datetime: str, start_datetime: str = None) -> List[int]:
     #
-    # Please nowcast_datetime must be: NOWCAST_DATETIME=$(TZ='America/Bogota' date '+%Y-%m-%dT%H:%M:%S')
+    # Please nowcast_datetime must be: NOWCAST_DATETIME=$(TZ='America/Bogota' date '+%Y-%m-%dT%H:%M:%S%Z')
     # Check the script bash: run.sh
     #
 
-    # defining the timezone
-    tz = pytz.timezone('America/Bogota')
-
     # NowCast DateTime
     nowcast_datetime = datetime.fromisoformat(nowcast_datetime)
-    # Changing the timezone of our object
-    nowcast_datetime = nowcast_datetime.astimezone(tz)
     print('-------------nowcast_datetime-------------->>>> ', nowcast_datetime)
 
     # Start DateTime
@@ -36,8 +30,6 @@ def get_start_nowcast_timestamp(nowcast_datetime: str, start_datetime: str = Non
         # Start DateTime
         start_datetime = datetime.fromisoformat(start_datetime)
     
-    # Changing the timezone of our object
-    start_datetime = start_datetime.astimezone(tz)
     print('-------------start_datetime-------------->>>> ', start_datetime)
 
     # Current DateTime
