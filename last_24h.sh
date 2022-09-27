@@ -24,8 +24,8 @@ echo "Running Tangara Pipeline ..."
 NOWCAST_DATETIME=$(TZ='America/Bogota' date --iso-8601=seconds)
 echo 'NOWCAST_DATETIME: '$NOWCAST_DATETIME
 kedro run --params nowcast_datetime:$NOWCAST_DATETIME
-# '2022-09-27T16:31:56-05:00'
-# kedro run --params nowcast_datetime:'2022-09-27T16:31:56-05:00'
+# '2022-09-06T13:35:00'
+# kedro run --params nowcast_datetime:'2022-09-14T09:13:25'
 
 # Run PM25
 kedro run --pipeline pm25
@@ -34,6 +34,6 @@ kedro run --pipeline pm25
 kedro run --pipeline pm25_nowcast_aqi
 
 # Run InfluxDB Tangara Stations
-#kedro run --pipeline influxdb_tangara_stations
+kedro run --pipeline influxdb_tangara_stations
 
 echo "Finished !!"

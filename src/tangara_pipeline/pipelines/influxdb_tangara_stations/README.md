@@ -1,4 +1,4 @@
-# Pipeline pm25_influxdb_aqi
+# Pipeline influxdb_tangara_stations
 
 > *Note:* This is a `README.md` boilerplate generated using `Kedro 0.18.1`.
 

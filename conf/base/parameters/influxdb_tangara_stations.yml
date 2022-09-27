@@ -1,5 +1,8 @@
-# This is a boilerplate parameters config generated for pipeline 'pm25_influxdb_aqi'
+# This is a boilerplate parameters config generated for pipeline 'influxdb_tangara_stations'
 # using Kedro 0.18.1.
 #
 # Documentation for this file format can be found in "Parameters"
 # Link: https://kedro.readthedocs.io/en/0.18.1/kedro_project_setup/configuration.html#parameters
+
+# InfluxDB Version, could be: 2.x or 1.8
+influxdb_version: '2.x'

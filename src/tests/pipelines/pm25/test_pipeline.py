@@ -10,7 +10,6 @@ https://docs.pytest.org/en/latest/getting-started.html
 import pytest
 
 from tests.fixtures.pm25_raw_fixture import pm25_raw_fixture
-from tests.fixtures.tangaras_fixture import tangaras_fixture
 from tangara_pipeline.pipelines.pm25 import create_pipeline
 
 
@@ -21,27 +20,19 @@ def pm25_pipeline():
 
 class TestPM25:
     def test_pipeline(self, pm25_pipeline):
-        inputs = pm25_pipeline.inputs()
-        outputs = pm25_pipeline.outputs()
+        inputs = pm25_pipeline.all_inputs()
+        outputs = pm25_pipeline.all_outputs()
 
-        assert inputs.issubset(set(["params:nowcast_datetime", "pm25_raw", "pm25_clean", "pm25_last_hour"]))
-        assert outputs.issubset(set(["tangaras", "pm25_raw", "pm25_clean", "pm25_last_hour", "pm25_last_8h", "pm25_last_12h", "pm25_last_24h"]))
+        assert len(inputs) == 3
+        assert len(outputs) == 5
+        assert inputs.issubset(set(['pm25_raw', 'pm25_clean', 'pm25_last_hour']))
+        assert outputs.issubset(set(['pm25_clean', 'pm25_last_hour', 'pm25_last_12h', 'pm25_last_8h', 'pm25_last_24h']))
 
-    def test_nodes(self, pm25_pipeline, tangaras_fixture, pm25_raw_fixture):
+    def test_nodes(self, pm25_pipeline, pm25_raw_fixture):
         pm25_nodes = pm25_pipeline.nodes
-        print(pm25_nodes)
-        assert len(pm25_nodes) == 6
-
-        nowcast_datetime = '2022-09-06T13:35:00'
+        assert len(pm25_nodes) == 5
 
         for node in pm25_nodes:
-            if node._func_name == "pm25_raw":
-                # Node pm25_raw
-                tangaras, pm25_raw = node.func(nowcast_datetime)
-                assert tangaras.empty == False
-                assert tangaras[tangaras_fixture.columns].columns.to_list() == tangaras_fixture.columns.to_list()
-                assert pm25_raw.empty == False
-                assert pm25_raw[pm25_raw_fixture.columns].columns.to_list() == pm25_raw_fixture.columns.to_list()
             if node._func_name == "pm25_clean":
                 # Node pm25_clean
                 pm25_clean = node.func(pm25_raw_fixture)

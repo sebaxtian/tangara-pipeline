@@ -1,5 +1,5 @@
 """
-This is a boilerplate pipeline 'pm25_influxdb_aqi'
+This is a boilerplate pipeline 'tangara_stations'
 generated using Kedro 0.18.1
 """
 
