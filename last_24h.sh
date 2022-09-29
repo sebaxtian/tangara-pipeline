@@ -18,14 +18,34 @@
 #    database: VALUE
 #
 
+# Change to tangara-pipeline Directory
+if [[ -z $1 ]];
+then 
+    echo "tangara-pipeline Directory: $PWD"
+    cd $PWD
+else
+    echo "tangara-pipeline Directory: $1"
+    cd $1
+fi
+
+# Setup Virtual Environment
+python -m venv .venv
+
+# Activate Virtual Enviromment
+source .venv/bin/activate
+
+# Install dependencies
+python -m pip install --upgrade pip
+if [ -f src/requirements.txt ]; then pip install -r src/requirements.txt; fi
+
 echo "Running Tangara Pipeline ..."
 
 # Run Tangara Stations Pipeline
 NOWCAST_DATETIME=$(TZ='America/Bogota' date --iso-8601=seconds)
 echo 'NOWCAST_DATETIME: '$NOWCAST_DATETIME
 kedro run --params nowcast_datetime:$NOWCAST_DATETIME
-# '2022-09-06T13:35:00'
-# kedro run --params nowcast_datetime:'2022-09-14T09:13:25'
+# '2022-09-27T16:31:56-05:00'
+# kedro run --params "nowcast_datetime:2022-09-27T16:31:56-05:00"
 
 # Run PM25
 kedro run --pipeline pm25
