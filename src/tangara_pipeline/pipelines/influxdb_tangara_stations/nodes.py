@@ -67,6 +67,7 @@ def get_stations_measurements(
         station_measurements["STATION_ID"] = station_id
         station_measurements["MAC"] = getattr(station, "MAC")
         station_measurements["GEOHASH"] = getattr(station, "GEOHASH")
+        station_measurements['GEOREGION'] = getattr(station, 'GEOREGION')
 
         # Set Data Types
         station_measurements['PM25'] = station_measurements['PM25'].astype('float64')
@@ -98,6 +99,7 @@ def station_measurements_to_generator(station_measurements: pd.DataFrame) -> Poi
             "STATION_ID": getattr(row, "STATION_ID"),
             "MAC": getattr(row, "MAC"),
             "GEOHASH": getattr(row, "GEOHASH"),
+            "GEOREGION": getattr(row, "GEOREGION"),
             "PM25": getattr(row, "PM25"),
             "AQI": getattr(row, "AQI"),
             "TEMP": getattr(row, "TEMP"),
@@ -109,8 +111,8 @@ def station_measurements_to_generator(station_measurements: pd.DataFrame) -> Poi
             measurements,
             record_measurement_key="MEASUREMENT_NAME",
             record_time_key="DATETIME",
-            record_tag_keys=["STATION_ID", "MAC", "GEOHASH"],
-            record_field_keys=["PM25", "AQI", "TEMP", "HUM", "CO2"],
+            record_tag_keys=["STATION_ID", "MAC", "GEOHASH", "GEOREGION"],
+            record_field_keys=["PM25", "AQI", "TEMP", "HUM", "CO2", "STATION_ID", "MAC", "GEOHASH"]
         )
         # print('Point:', point)
         yield point
