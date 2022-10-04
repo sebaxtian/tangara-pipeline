@@ -70,15 +70,15 @@ def get_stations_measurements(
         station_measurements['GEOREGION'] = getattr(station, 'GEOREGION')
 
         # Set Data Types
-        station_measurements['PM25'] = station_measurements['PM25'].astype('float64')
+        station_measurements['PM25'] = station_measurements['PM25'].astype('float32')
         station_measurements['PM25'] = station_measurements['PM25'].apply(lambda x: x if math.isnan(x) else round(x, 0))
-        station_measurements['AQI'] = station_measurements['AQI'].astype('float64')
+        station_measurements['AQI'] = station_measurements['AQI'].astype('float32')
         station_measurements['AQI'] = station_measurements['AQI'].apply(lambda x: x if math.isnan(x) else round(x, 0))
-        station_measurements['TEMP'] = station_measurements['TEMP'].astype('float64')
+        station_measurements['TEMP'] = station_measurements['TEMP'].astype('float32')
         station_measurements['TEMP'] = station_measurements['TEMP'].apply(lambda x: x if math.isnan(x) else round(x, 0))
-        station_measurements['HUM'] = station_measurements['HUM'].astype('float64')
+        station_measurements['HUM'] = station_measurements['HUM'].astype('float32')
         station_measurements['HUM'] = station_measurements['HUM'].apply(lambda x: x if math.isnan(x) else round(x, 0))
-        station_measurements['CO2'] = station_measurements['CO2'].astype('float64')
+        station_measurements['CO2'] = station_measurements['CO2'].astype('float32')
         station_measurements['CO2'] = station_measurements['CO2'].apply(lambda x: x if math.isnan(x) else round(x, 0))
 
         # Set Tangara Station Measurements
