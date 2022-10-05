@@ -39,7 +39,7 @@ class TestTangaraStations:
                 # Node tangara_stations
                 tangara_stations = node.func(nowcast_datetime)
                 assert tangara_stations.empty == False
-                assert tangara_stations.columns.to_list() == ['DATETIME', 'ID', 'MAC', 'GEOHASH', 'GEOLOCATION', 'LATITUDE', 'LONGITUDE']
+                assert tangara_stations.columns.to_list() == ['DATETIME', 'ID', 'MAC', 'GEOHASH', 'GEOREGION', 'GEOLOCATION', 'LATITUDE', 'LONGITUDE']
             if node._func_name == "pm25_raw":
                 # Node pm25_raw
                 pm25_raw = node.func(tangara_stations, nowcast_datetime)
