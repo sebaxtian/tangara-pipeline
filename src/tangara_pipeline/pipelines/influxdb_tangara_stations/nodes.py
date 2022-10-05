@@ -4,6 +4,7 @@ generated using Kedro 0.18.1
 """
 
 import pandas as pd
+import math
 from pathlib import Path
 from influxdb_client import InfluxDBClient, Point
 from kedro.config import ConfigLoader
@@ -66,6 +67,19 @@ def get_stations_measurements(
         station_measurements["STATION_ID"] = station_id
         station_measurements["MAC"] = getattr(station, "MAC")
         station_measurements["GEOHASH"] = getattr(station, "GEOHASH")
+        station_measurements['GEOREGION'] = getattr(station, 'GEOREGION')
+
+        # Set Data Types
+        station_measurements['PM25'] = station_measurements['PM25'].astype('float32')
+        station_measurements['PM25'] = station_measurements['PM25'].apply(lambda x: x if math.isnan(x) else round(x, 0))
+        station_measurements['AQI'] = station_measurements['AQI'].astype('float32')
+        station_measurements['AQI'] = station_measurements['AQI'].apply(lambda x: x if math.isnan(x) else round(x, 0))
+        station_measurements['TEMP'] = station_measurements['TEMP'].astype('float32')
+        station_measurements['TEMP'] = station_measurements['TEMP'].apply(lambda x: x if math.isnan(x) else round(x, 0))
+        station_measurements['HUM'] = station_measurements['HUM'].astype('float32')
+        station_measurements['HUM'] = station_measurements['HUM'].apply(lambda x: x if math.isnan(x) else round(x, 0))
+        station_measurements['CO2'] = station_measurements['CO2'].astype('float32')
+        station_measurements['CO2'] = station_measurements['CO2'].apply(lambda x: x if math.isnan(x) else round(x, 0))
 
         # Set Tangara Station Measurements
         stations_measurements[station_id] = station_measurements
@@ -85,6 +99,7 @@ def station_measurements_to_generator(station_measurements: pd.DataFrame) -> Poi
             "STATION_ID": getattr(row, "STATION_ID"),
             "MAC": getattr(row, "MAC"),
             "GEOHASH": getattr(row, "GEOHASH"),
+            "GEOREGION": getattr(row, "GEOREGION"),
             "PM25": getattr(row, "PM25"),
             "AQI": getattr(row, "AQI"),
             "TEMP": getattr(row, "TEMP"),
@@ -96,8 +111,8 @@ def station_measurements_to_generator(station_measurements: pd.DataFrame) -> Poi
             measurements,
             record_measurement_key="MEASUREMENT_NAME",
             record_time_key="DATETIME",
-            record_tag_keys=["STATION_ID", "MAC", "GEOHASH"],
-            record_field_keys=["PM25", "AQI", "TEMP", "HUM", "CO2"],
+            record_tag_keys=["STATION_ID", "MAC", "GEOHASH", "GEOREGION"],
+            record_field_keys=["PM25", "AQI", "TEMP", "HUM", "CO2", "STATION_ID", "MAC", "GEOHASH"]
         )
         # print('Point:', point)
         yield point
