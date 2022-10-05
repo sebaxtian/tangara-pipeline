@@ -105,13 +105,14 @@ def get_tangara_stations(start_datetime: int, end_datetime: int) -> pd.DataFrame
     tangara_stations['LONGITUDE'] = tangara_stations['GEOLOCATION'].apply(lambda x: x.split(' ')[1])
     tangara_stations['tags'] = tangara_stations['tags'].apply(lambda x: f"TANGARA_{x[-4:]}")
     tangara_stations.rename(columns={'tags': 'ID', 'geohash': 'GEOHASH'}, inplace=True)
+    tangara_stations['GEOREGION'] = tangara_stations['GEOHASH'].apply(lambda x: x[:3])
 
     # Date time when query is executed
     tz = timezone(timedelta(hours=-5))
     tangara_stations['DATETIME'] = datetime.now(tz=tz).isoformat()
 
     # Reorder Columns
-    tangara_stations = tangara_stations[['DATETIME', 'ID', 'MAC', 'GEOHASH', 'GEOLOCATION', 'LATITUDE', 'LONGITUDE']]
+    tangara_stations = tangara_stations[['DATETIME', 'ID', 'MAC', 'GEOHASH', 'GEOREGION', 'GEOLOCATION', 'LATITUDE', 'LONGITUDE']]
     
     # Update dtype
     tangara_stations[['LATITUDE', 'LONGITUDE']] = tangara_stations[['LATITUDE', 'LONGITUDE']].astype('float64')

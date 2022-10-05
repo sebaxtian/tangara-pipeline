@@ -24,6 +24,8 @@ logs/**
 !data/03_primary/pm25_last_24h.csv
 !data/04_feature/aqi_last_24h.csv
 
+# crontab log
+crontab_log.txt
 
 
 ##########################
