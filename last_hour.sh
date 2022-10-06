@@ -45,9 +45,9 @@ NOWCAST_DATETIME=$(TZ='America/Bogota' date --iso-8601=seconds)
 START_DATETIME=$(TZ='America/Bogota' date --date='1 hour ago' --iso-8601=seconds)
 echo 'NOWCAST_DATETIME: '$NOWCAST_DATETIME
 echo 'START_DATETIME: '$START_DATETIME
+
+# Run Tangara Stations
 kedro run --params "nowcast_datetime:$NOWCAST_DATETIME, start_datetime:$START_DATETIME"
-# '2022-09-27T16:31:56-05:00'
-# kedro run --params "nowcast_datetime:2022-09-27T16:31:56-05:00, start_datetime:2022-09-27T16:31:56-05:00"
 
 # Run PM25
 kedro run --pipeline pm25

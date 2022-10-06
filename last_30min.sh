@@ -3,8 +3,8 @@
 #
 # Run tangara-pipeline
 #
-# Process data from last 5 minutes, execute this script every 5 minutes to report data from
-# the last 5 minutes since current datetime.
+# Process data from last 30 minutes, execute this script every 5 minutes to report data from
+# the last 30 minutes since current datetime.
 #
 # Please, before run, setup the credentials.yml file into directory conf/local/
 # Credentials to InfluxDB
@@ -42,7 +42,7 @@ echo "Running Tangara Pipeline ..."
 
 # Run Tangara Stations Pipeline
 NOWCAST_DATETIME=$(TZ='America/Bogota' date --iso-8601=seconds)
-START_DATETIME=$(TZ='America/Bogota' date --date='5 minutes ago' --iso-8601=seconds)
+START_DATETIME=$(TZ='America/Bogota' date --date='30 minutes ago' --iso-8601=seconds)
 echo 'NOWCAST_DATETIME: '$NOWCAST_DATETIME
 echo 'START_DATETIME: '$START_DATETIME
 

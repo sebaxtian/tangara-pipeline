@@ -21,8 +21,8 @@ logs/**
 !.gitkeep
 
 # also keep the example Tangaras, PM25 and AQI datasets
-!data/03_primary/pm25_last_24h.csv
-!data/04_feature/aqi_last_24h.csv
+#!data/03_primary/pm25_last_24h.csv
+#!data/04_feature/aqi_last_24h.csv
 
 # crontab log
 crontab_log.txt
