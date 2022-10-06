@@ -154,7 +154,7 @@ def sync_ingesting_stations_measurements(
     Define Retry strategy - 3 attempts => 2, 4, 8
     """
     retries = WritesRetry(total=10, retry_interval=2, exponential_base=2)
-    with InfluxDBClient(url=url, token=token, org=org, retries=retries) as client:
+    with InfluxDBClient(url=url, token=token, org=org, retries=retries, timeout=20000) as client:
 
         """
         Use synchronous version of WriteApi to strongly depends on result of write
@@ -183,6 +183,11 @@ def sync_ingesting_stations_measurements(
             on_error=lambda ex: print(f"Unexpected error: {ex}"),
             on_completed=lambda: print("Import finished!"),
         )
+
+        """
+        Shutdown the client
+        """
+        client.close()
 
 
 def ingesting_influxdb(
