@@ -29,14 +29,14 @@ else
 fi
 
 # Setup Virtual Environment
-python -m venv .venv
+#python -m venv .venv
 
 # Activate Virtual Enviromment
 source .venv/bin/activate
 
 # Install dependencies
-python -m pip install --upgrade pip
-if [ -f src/requirements.txt ]; then pip install -r src/requirements.txt; fi
+#python -m pip install --upgrade pip
+#if [ -f src/requirements.txt ]; then pip install -r src/requirements.txt; fi
 
 echo "Running Tangara Pipeline ..."
 
