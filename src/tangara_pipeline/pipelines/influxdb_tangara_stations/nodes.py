@@ -153,7 +153,7 @@ def sync_ingesting_stations_measurements(
     """
     Define Retry strategy - 3 attempts => 2, 4, 8
     """
-    retries = WritesRetry(total=3, retry_interval=1, exponential_base=2)
+    retries = WritesRetry(total=6, retry_interval=1, exponential_base=2)
     with InfluxDBClient(url=url, token=token, org=org, retries=retries) as client:
 
         """
