@@ -1,15 +1,17 @@
 # Tangara Pipeline
 Tangara Pipeline uses Kedro Framework for creating reproducible, maintainable, and modular data science code. Data sources are provided from Air Quality sensors in Cali, Colombia. https://tangara.chis.pa/
 
+## What is the Air Quality Index - AQI?
+More about it: [README.md](standalone/docs/README.md)
 
-# Análisis Día sin Carro y sin Moto - 2022
+## Análisis Día sin Carro y sin Moto - 2022
 La calidad del aire de Cali no mejoró con el día sin carro y sin moto ¿Y entonces?
 **[LINK](https://cali.webnoticias.co/opinion/la-calidad-del-aire-de-cali-no-mejoro-con-el-dia-sin-carro-y-sin-moto-y-entonces)**
 
-# Análisis Día sin Carro y sin Moto - 2023
+## Análisis Día sin Carro y sin Moto - 2023
 - TODO: Análisis
 
-# Tangara Standalone Pipeline
+## Tangara Standalone Pipeline
 A new standalone pipeline version was created inside the folder **standalone** please check out the [README.md](standalone/README.md) file standalone version.
 
 ## How to use
@@ -33,6 +35,10 @@ Install all Python requirements:
 $promt> python -m pip install -U pip
 $promt> pip install -r requirements.txt
 ```
+
+### Step 3: Use Tangara Standalone Pipeline
+
+Please check out the [README.md](standalone/README.md) file standalone version.
 
 ### Optional
 

@@ -9,3 +9,6 @@ Read more [README.md](notebooks/README.md)
 
 ## Scripts
 Read more [README.md](scripts/README.md)
+
+## Documentation
+Read more [README.md](docs/README.md)
