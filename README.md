@@ -9,6 +9,9 @@ La calidad del aire de Cali no mejoró con el día sin carro y sin moto ¿Y ento
 # Análisis Día sin Carro y sin Moto - 2023
 - TODO: Análisis
 
+# Tangara Standalone Pipeline
+A new standalone pipeline version was created inside the folder **standalone** please check out the [README.md](standalone/README.md) file standalone version.
+
 ## How to use
 
 Please read and execute each step below:
