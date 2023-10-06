@@ -36,10 +36,6 @@ $promt> python -m pip install -U pip
 $promt> pip install -r requirements.txt
 ```
 
-### Step 3: Use Tangara Standalone Pipeline
-
-Please check out the [README.md](standalone/README.md) file standalone version.
-
 ### Optional
 
 Generate a requirements file and then install from it in another environment:
@@ -47,6 +43,10 @@ Generate a requirements file and then install from it in another environment:
 ```bash
 $promt> pip freeze > requirements.txt
 ```
+
+## Step 3: Use Tangara Standalone Pipeline
+
+Please check out the [README.md](standalone/README.md) file standalone version.
 
 ---
 
