@@ -52,3 +52,12 @@ Process data from the last 8 hours, and execute this script every 8 hours to rep
 # from tangara-pipeline root directory
 $promt> ./standalone/scripts/last_8h.sh
 ```
+
+## Last 12 Hours
+
+Process data from the last 12 hours, and execute this script every 12 hours to report data from the last 12 hours since the current datetime:
+
+```bash
+# from tangara-pipeline root directory
+$promt> ./standalone/scripts/last_12h.sh
+```
