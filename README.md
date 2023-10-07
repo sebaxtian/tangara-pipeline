@@ -1,5 +1,5 @@
 # Tangara Pipeline
-Tangara Pipeline uses Kedro Framework for creating reproducible, maintainable, and modular data science code. Data sources are provided from Air Quality sensors in Cali, Colombia. https://tangara.chis.pa/
+Tangara Standalone Pipeline. Data sources are provided from Air Quality sensors in Cali, Colombia. https://tangara.chis.pa/
 
 [![Tangara Activismo del Aire](standalone/docs/logo-principal-color.png "Tangara Activismo del Aire")](standalone/README.md)
 
