@@ -167,3 +167,16 @@ venv.bak/
 
 # Visual Studio Code Settings
 .vscode/
+
+
+**/data/0_raw/*
+!**/data/0_raw/.gitkeep
+
+**/data/1_clean/*
+!**/data/1_clean/.gitkeep
+
+**/data/2_features/*
+!**/data/2_features/.gitkeep
+
+**/data/backup/*
+!**/data/backup/.gitkeep
