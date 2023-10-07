@@ -1,0 +1,52 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
+{
+	"name": "Dev",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+		"ghcr.io/devcontainers/features/python:1": {
+			"version": "3.11"
+		}
+    // ,"ghcr.io/devcontainers/features/docker-in-docker:2": {}
+	},
+	
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// https://hub.docker.com/_/mongo
+	// docker exec -it dev-mongo mongosh --host localhost -u admin -p admin --authenticationDatabase admin auth
+	// "postCreateCommand": "if [ ! $(docker ps -a -f name=dev-mongo -q) ]; then docker run -d --name dev-mongo -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=admin -e MONGO_INITDB_DATABASE=auth mongo:6; fi",
+	// "postStartCommand": "if [ $(docker ps -a -f name=dev-mongo -f status=exited -q) ]; then docker restart dev-mongo; fi",
+
+	// Configure tool-specific properties.
+	// "customizations": {},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"mikestead.dotenv",
+				"GitHub.codespaces",
+				"ms-vscode-remote.remote-containers",
+				"PKief.material-icon-theme",
+				"tomoki1207.pdf",
+				"ms-python.black-formatter",
+				"ms-azuretools.vscode-docker",
+				"github.vscode-github-actions",
+				"codezombiech.gitignore",
+				"eamodio.gitlens",
+				"ms-python.isort",
+				"ms-python.vscode-pylance",
+				"ms-python.python",
+				"alexcvzz.vscode-sqlite",
+				"rangav.vscode-thunder-client",
+				"redhat.vscode-yaml"
+			]
+		}
+	}
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
