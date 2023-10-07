@@ -3,14 +3,14 @@
 #
 # Run tangara-pipeline
 #
-# Process data from the last 4 hours, and execute this script every 4 hours
-# to report data from the last 4 hours since the current datetime.
+# Process data from the last 24 hours, and execute this script every 24 hours
+# to report data from the last 24 hours since the current datetime.
 #
 
-echo "Running Tangara Last 4 Hours Pipeline ..."
+echo "Running Tangara Last 24 Hours Pipeline ..."
 
 # Define datetime interval to last 5min from now
-START_ISO8601_DATETIME=$(TZ='America/Bogota' date --date='4 hour ago' --iso-8601=seconds)
+START_ISO8601_DATETIME=$(TZ='America/Bogota' date --date='24 hour ago' --iso-8601=seconds)
 END_ISO8601_DATETIME=$(TZ='America/Bogota' date --iso-8601=seconds)
 GROUP_BY_TIME='1h'
 echo 'START_ISO8601_DATETIME: '$START_ISO8601_DATETIME
