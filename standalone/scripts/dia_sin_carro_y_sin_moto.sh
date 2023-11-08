@@ -53,7 +53,7 @@ while [[ $next_datetime < $end_datetime ]]; do
     echo 'Running Tangara Stations ...'
     jupyter nbconvert --execute --to notebook --inplace standalone/notebooks/tangaras.ipynb &>/dev/null
     # Copy file
-    cp -fv standalone/data/0_raw/tangaras.csv standalone/data/dia_sin_carro_y_sin_moto/$directory/tangaras_$suffix_filename.csv
+    cp -fv standalone/data/0_raw/tangaras.csv /tmp/tangaras_$suffix_filename.csv
     echo '... OK'
     echo ''
 
@@ -61,7 +61,7 @@ while [[ $next_datetime < $end_datetime ]]; do
     echo 'Running Temperature Raw Data ...'
     jupyter nbconvert --execute --to notebook --inplace standalone/notebooks/temp_raw.ipynb &>/dev/null
     # Copy file
-    cp -fv standalone/data/0_raw/temp_raw.csv standalone/data/dia_sin_carro_y_sin_moto/$directory/temp_raw_$suffix_filename.csv
+    cp -fv standalone/data/0_raw/temp_raw.csv /tmp/temp_raw_$suffix_filename.csv
     echo '... OK'
     echo ''
 
@@ -69,7 +69,7 @@ while [[ $next_datetime < $end_datetime ]]; do
     echo 'Running Humidity Raw Data ...'
     jupyter nbconvert --execute --to notebook --inplace standalone/notebooks/hum_raw.ipynb &>/dev/null
     # Copy file
-    cp -fv standalone/data/0_raw/hum_raw.csv standalone/data/dia_sin_carro_y_sin_moto/$directory/hum_raw_$suffix_filename.csv
+    cp -fv standalone/data/0_raw/hum_raw.csv /tmp/hum_raw_$suffix_filename.csv
     echo '... OK'
     echo ''
 
@@ -77,7 +77,7 @@ while [[ $next_datetime < $end_datetime ]]; do
     echo 'Running PM2.5 Raw Data ...'
     jupyter nbconvert --execute --to notebook --inplace standalone/notebooks/pm25_raw.ipynb &>/dev/null
     # Copy file
-    cp -fv standalone/data/0_raw/pm25_raw.csv standalone/data/dia_sin_carro_y_sin_moto/$directory/pm25_raw_$suffix_filename.csv
+    cp -fv standalone/data/0_raw/pm25_raw.csv /tmp/pm25_raw_$suffix_filename.csv
     echo '... OK'
     echo ''
 
@@ -90,27 +90,27 @@ sed -i~ "/^END_ISO8601_DATETIME=/s/=.*/="$END_ISO8601_DATETIME"/" standalone/.en
 
 
 # Merge, Remove and Copy Tangaras
-csvstack standalone/data/dia_sin_carro_y_sin_moto/$directory/tangaras_*.csv > standalone/data/dia_sin_carro_y_sin_moto/$directory/tangaras.csv
-rm -fv standalone/data/dia_sin_carro_y_sin_moto/$directory/tangaras_*.csv
+mlr --csv unsparsify /tmp/tangaras_*.csv > standalone/data/dia_sin_carro_y_sin_moto/$directory/tangaras.csv
+rm -fv /tmp/tangaras_*.csv
 cp -fv standalone/data/dia_sin_carro_y_sin_moto/$directory/tangaras.csv standalone/data/0_raw/tangaras.csv
 sort standalone/data/dia_sin_carro_y_sin_moto/$directory/tangaras.csv | uniq > /tmp/salida.csv && mv -fv /tmp/salida.csv standalone/data/dia_sin_carro_y_sin_moto/$directory/tangaras.csv
 echo ''
 
 # Merge, Remove and Copy Temperature Raw Data
-csvstack standalone/data/dia_sin_carro_y_sin_moto/$directory/temp_raw_*.csv > standalone/data/dia_sin_carro_y_sin_moto/$directory/temp_raw.csv
-rm -fv standalone/data/dia_sin_carro_y_sin_moto/$directory/temp_raw_*.csv
+mlr --csv unsparsify /tmp/temp_raw_*.csv > standalone/data/dia_sin_carro_y_sin_moto/$directory/temp_raw.csv
+rm -fv /tmp/temp_raw_*.csv
 cp -fv standalone/data/dia_sin_carro_y_sin_moto/$directory/temp_raw.csv standalone/data/0_raw/temp_raw.csv
 echo ''
 
 # Merge, Remove and Copy Humidity Raw Data
-csvstack standalone/data/dia_sin_carro_y_sin_moto/$directory/hum_raw_*.csv > standalone/data/dia_sin_carro_y_sin_moto/$directory/hum_raw.csv
-rm -fv standalone/data/dia_sin_carro_y_sin_moto/$directory/hum_raw_*.csv
+mlr --csv unsparsify /tmp/hum_raw_*.csv > standalone/data/dia_sin_carro_y_sin_moto/$directory/hum_raw.csv
+rm -fv /tmp/hum_raw_*.csv
 cp -fv standalone/data/dia_sin_carro_y_sin_moto/$directory/hum_raw.csv standalone/data/0_raw/hum_raw.csv
 echo ''
 
 # Merge, Remove and Copy PM2.5 Raw Data
-csvstack standalone/data/dia_sin_carro_y_sin_moto/$directory/pm25_raw_*.csv > standalone/data/dia_sin_carro_y_sin_moto/$directory/pm25_raw.csv
-rm -fv standalone/data/dia_sin_carro_y_sin_moto/$directory/pm25_raw_*.csv
+mlr --csv unsparsify /tmp/pm25_raw_*.csv > standalone/data/dia_sin_carro_y_sin_moto/$directory/pm25_raw.csv
+rm -fv /tmp/pm25_raw_*.csv
 cp -fv standalone/data/dia_sin_carro_y_sin_moto/$directory/pm25_raw.csv standalone/data/0_raw/pm25_raw.csv
 echo ''
 
