@@ -13,8 +13,11 @@ La calidad del aire de Cali no mejoró con el día sin carro y sin moto ¿Y ento
 ## Análisis Día sin Carro y sin Moto - 2023
 - TODO: Análisis
 
-## Tangara Standalone Pipeline
-A new standalone pipeline version was created inside the folder **standalone** please check out the [README.md](standalone/README.md) file standalone version.
+## Requirements
+
+* Python 3.8+
+* Poetry 1.6+
+    - [Install Poetry](https://python-poetry.org/docs/#installation)
 
 ## How to use
 
@@ -22,33 +25,32 @@ Please read and execute each step below:
 
 ### Step 1
 
-Create and use Python virtual environment:
-
+Install poetry by script:
 ```bash
-$promt> python -m venv .venv
-$promt> source .venv/bin/activate
+$promt> bash install-poetry.sh
 ```
 
 ### Step 2
 
-Install all Python requirements:
+Activating the virtual environment:
 
 ```bash
-$promt> python -m pip install -U pip
-$promt> pip install -r requirements.txt
+$promt> poetry shell
 ```
 
 ### Optional
 
-Generate a requirements file and then install from it in another environment:
+Deactivate the virtual environment and exit:
 
 ```bash
-$promt> pip freeze > requirements.txt
+$(tangara-pipeline-py3.12)> exit
+# To deactivate the virtual environment without leaving the shell use deactivate
+$(tangara-pipeline-py3.12)> deactivate
 ```
 
 ## Step 3: Use Tangara Standalone Pipeline
 
-Please check out the [README.md](standalone/README.md) file standalone version.
+A new standalone pipeline version was created inside the folder **standalone** please check out the [README.md](standalone/README.md) file standalone version.
 
 ---
 
