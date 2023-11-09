@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "tangara-pipeline"
+version = "1.0.0"
+description = "Tangara Standalone Pipeline. Data sources are provided from Air Quality sensors in Cali, Colombia. https://tangara.chis.pa/"
+authors = ["Sebastian Rios Sabogal <sebaxtianrioss@gmail.com>"]
+license = "GPL-3.0-or-later"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.12,<3.13"
+jupyter = "^1.0.0"
+python-dotenv = "^1.0.0"
+importnb = "^2023.11.1"
+geohash2 = "^1.1"
+pandas = "^2.1.2"
+matplotlib = "^3.8.1"
+seaborn = "^0.13.0"
+scipy = "^1.11.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
