@@ -23,6 +23,7 @@ The environement variables below are required:
 
 * URL_INFLUXDB_QUERY_ENDPOINT=http://influxdb.example:8080/query
 * DB_NAME_INFLUXDB=my_database
+* PLOT_CHARTS=
 * GROUP_BY_TIME=30s
 * START_ISO8601_DATETIME=2023-03-17T00:00:00-05:00
 * END_ISO8601_DATETIME=2023-03-17T00:00:00-05:00
@@ -78,4 +79,33 @@ Process data from the last 12 hours, and execute this script every 12 hours to r
 ```bash
 # from tangara-pipeline root directory
 $promt> ./standalone/scripts/last_12h.sh
+```
+
+## X Date Time
+
+Process data from any date time interval:
+
+```bash
+# from tangara-pipeline root directory
+$promt> ./standalone/scripts/x_time.sh
+```
+
+## Dia sin Carro y sin Moto
+
+Please, before run the dscysm.sh setup the .env file, to process data it needs 48 hours of data:
+
+```bash
+# .env file variables
+# Example:
+PLOT_CHARTS=
+GROUP_BY_TIME=30s
+START_ISO8601_DATETIME=2023-11-07T00:00:00-05:00
+END_ISO8601_DATETIME=2023-11-08T23:59:59-05:00
+```
+
+Finally, process the data:
+
+```bash
+# from tangara-pipeline root directory
+$promt> ./standalone/scripts/dscysm.sh
 ```
